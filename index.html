@@ -20,7 +20,7 @@ clickconvert.addEventListener('click', function(){
 var speech = true;
 window.SpeechRecognition = window.webkitSpeechRecognition;
 const recognition = new SpeechRecognition();
-recognition.interimResults = true;
+recognition.interimResults = false;
 
 recognition.addEventListener('result',e=>{
 		console.log(e);
