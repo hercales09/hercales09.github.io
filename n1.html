@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0,
+user-scalable=1">
+<title>Home</title>
+</head>
+<body>
+<div class="voice_to_text">
+<h1>Voice To Text Converter</h1>
+<textarea id="convert_text"></textarea>
+<button id="clickconvert">Voicé to Text</button>
+</div>
+<div>
+<p id="abc"></p>
+</div>
+<script>
+var speech = true;
+window.SpeechRecognition = window.webkitSpeechRecognition;
+const recognition = new SpeechRecognition();
+recognition.start();
+ recognition.continuous = true;
+
+recognition.addEventListener('result',e=>{
+console.log(e)
+const transcript = Array.from(e.results)
+.map(result =>result[0])
+.map(result => result.transcript)
+convert_text.innerHTML = transcript;
+document.getElementById("abc").innerHTML=transcript;
+console.log(transcript)
+const timeout= setTimeout(clearspeed,8000)
+function clearspeed(){
+location.reload()
+}
+})
+
+</script>
+</body>
+</html>
