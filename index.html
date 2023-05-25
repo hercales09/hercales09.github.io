@@ -20,7 +20,6 @@ clickconvert.addEventListener('click', function(){
 var speech = true;
 window.SpeechRecognition = window.webkitSpeechRecognition;
 const recognition = new SpeechRecognition();
- recognition.continuous = true;
 recognition.interimResults = true;
 
 recognition.addEventListener('result',e=>{
@@ -40,8 +39,6 @@ if(a===""){}
 else{
 	console.log(a);
 	abc.innerHTML = "";
-	recognition.stop();
-	location.reload();
 	}
 }
 
