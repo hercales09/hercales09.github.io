@@ -8,7 +8,7 @@ user-scalable=1">
 </head>
 <body style="background:black">
 <div class="voice_to_text">
-<h1 style="color:grey">Voice To Text Converter</h1>
+<h1 style="color:white">Voice To Text Converter</h1>
 <textarea id="convert_text" style="color:black;font-weight:bold"></textarea>
 <button id="clickconvert">Voicé to Text</button>
 <button id="clear" style="position:absolute;top:100px;left:300px">CLEAR</button>
@@ -31,7 +31,7 @@ const transcript = Array.from(e.results)
 .map(result => result.transcript)
 convert_text.innerHTML = transcript;
 val= transcript;
-const timeout= setTimeout(clearspeed,2000)
+let timeout= setTimeout(clearspeed,2000)
 })
 function clearspeed(){
 	var a=document.getElementById("convert_text").value;
@@ -42,7 +42,7 @@ else{
 	document.getElementById("abc").innerHTML=val;
 	recognition.abort();
 	}
-	const timeouta= setTimeout(clearspeeda,16000)
+	let timeouta= setTimeout(clearspeeda,16000)
 }
 function clearspeeda(){
 document.getElementById("abc").innerHTML="";
@@ -57,8 +57,8 @@ clear.addEventListener('click', clearsp);
 function clearsp (event){
 document.getElementById("abc").innerHTML="";
 document.getElementById("convert_text").innerHTML="";
-clearTimeout(timeouta);
-clearTimeout(timeout);
+ clearTimeout(timeouta);
+ clearTimeout(timeout);
 }
 
 </script>
