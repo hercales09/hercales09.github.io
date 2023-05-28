@@ -89,18 +89,28 @@
 <p style="font-weight:bolder;color:white;font-size:24px; margin-top:2px;position:absolute;top:-5px;left:1190px;">LEFT HANDER</p>
 <div><button id='clearww' style="height:40px; width:100px;position:absolute;top:40px;left:770px;font-size:22px;font-weight:bold">CLEAR</button></div>
 <p id="data" style="font-weight:bolder;color:white;font-size:24px; margin-top:2px;position:absolute;top:670px;left:100px;">DATA</p>
-<img id='RHBWW'src="https://ik.imagekit.io/ctmfcct2/WAGONWHEEL_stretch_ZHA6BUMfM.png?updatedAt=1685313429772"  style="zoom:0.7;z-index:-3;position:absolute;top:70px;left:60px">
+<img id='RHBWW'src="https://ik.imagekit.io/ctmfcct2/WAGONWHEEL_stretch_ZHA6BUMfM.png?updatedAt=1685313429772"    style="zoom:0.7;z-index:-3;position:absolute;top:70px;left:60px">
 <img id='LHBWW'src="https://ik.imagekit.io/ctmfcct2/WAGONWHEEL_stretch_ZHA6BUMfM.png?updatedAt=1685313429772"  style="zoom:0.7;z-index:-3;position:absolute;top:70px;left:1320px">
 <iframe id="balltracker" name="balltrack" scrolling="no" style="z-index:3;position:absolute;top:700px; width:1920px;height:1080px"src="https://7e09-150-107-26-137.ngrok-free.app"></iframe>
 <iframe id="voicespeed" allow="microphone" name="voispeed" style="z-index:4" src="https://hercales09.github.io/"></iframe>
+<textarea id="balltrackerurl" style="position:absolute;left:1680px"></textarea>
+<div><button id='bturlsub' style="height:20px; width:70px;position:absolute;top:50px;left:1780px;font-size:12px;font-weight:bold">SUBMIT</button></div>
 </body>
 <script>
+/*iframe url*/
+var surl = document.getElementById('bturlsub');
+surl.addEventListener('click', submiturl);
+function submiturl (event){
+var bturl=  document.getElementById('balltrackerurl').value;
+document.getElementById("balltracker").src =bturl;
+}
+
+/*iframe url*/
 let timeout;
 let timer_on = 0;
 let countdown = 0;
 function startCount() {
   if (!timer_on) {
-   
     timer_on = 1;
     timedCount();
 	function timedCount() {
