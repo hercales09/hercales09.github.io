@@ -113,16 +113,28 @@
 <iframe id="voicespeed" allow="microphone" name="voispeed" style="z-index:4;width:180px;height:110px;position:absolute;top:290px;left:732px;" src="https://hercales09.github.io/"></iframe>
 <textarea id="balltrackerurl" style="position:absolute;left:1680px"></textarea>
 <textarea id="fildersarray" style="position:absolute;left:1680px;top:90px"></textarea>
+<textarea id="bowlbgcol" style="position:absolute;left:740px;top:550px"></textarea>
+<textarea id="bowlfontcol" style="position:absolute;left:740px;top:600px"></textarea>
+<div><button id='colsubmit' style="height:20px; width:70px;position:absolute;top:650px;left:830px;font-size:12px;font-weight:bold">colSUBMIT</button></div>
 <div><button id='bturlsub' style="height:20px; width:70px;position:absolute;top:50px;left:1780px;font-size:12px;font-weight:bold">SUBMIT</button></div>
 <div><button id='fielderssub' style="height:20px; width:70px;position:absolute;top:130px;left:1780px;font-size:12px;font-weight:bold">SUBMIT</button></div>
 <span class="dot" id="indicator" style="height:80px;width:80px;background-color:black;border-radius:50%;z-index:-3;position:absolute;top:110px;left:780px"></span>
 </body>
 <script>
+var bgccol;
+var fontcol;
+var colsubmitbut = document.getElementById('colsubmit');
+colsubmitbut.addEventListener('click', colorsubmit);
+function colorsubmit (event){
+bgccol= document.getElementById('bowlbgcol').value;
+fontcol= document.getElementById('bowlfontcol').value;
+}
 /*FIELDERS*/
 var fieldersubmit = document.getElementById('fielderssub');
 fieldersubmit.addEventListener('click', fieldersarray);
 function fieldersarray (event){
 var rawfielders=  document.getElementById('fildersarray').value;
+rawfielders=rawfielders.replace(/, /g,",")
 let fielderarray=rawfielders.split(",");
 document.getElementById('fielder1').innerHTML =fielderarray[0];document.getElementById('fielder2').innerHTML =fielderarray[1];document.getElementById('fielder3').innerHTML =fielderarray[2];
 document.getElementById('fielder4').innerHTML =fielderarray[3];document.getElementById('fielder5').innerHTML =fielderarray[4];document.getElementById('fielder6').innerHTML =fielderarray[5];
@@ -142,7 +154,7 @@ fielder1but.addEventListener('click', setfielder1);
 function setfielder1 (event){
 let fielder1=document.getElementById('fielder1').innerHTML;
 let f1=fielder1.replace(" ","\\n")
-document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+f1+'"}]}' ;
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+f1+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'"}]}';
 }
 
 var fielder2but = document.getElementById('fielder2');
@@ -150,84 +162,84 @@ fielder2but.addEventListener('click', setfielder2);
 function setfielder2 (event){
 let fielder2=document.getElementById('fielder2').innerHTML;
 let f2=fielder2.replace(" ","\\n")
-document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+f2+'"}]}' ;
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+f2+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'"}]}';
 }
 var fielder3but = document.getElementById('fielder3');
 fielder3but.addEventListener('click', setfielder3);
 function setfielder3 (event){
 let fielder3=document.getElementById('fielder3').innerHTML;
 let f3=fielder3.replace(" ","\\n")
-document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+f3+'"}]}' ;
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+f3+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'"}]}';
 }
 var fielder4but = document.getElementById('fielder4');
 fielder4but.addEventListener('click', setfielder4);
 function setfielder4 (event){
 let fielder4=document.getElementById('fielder4').innerHTML;
 let f4=fielder4.replace(" ","\\n")
-document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+f4+'"}]}' ;
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+f4+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'"}]}';
 }
 var fielder5but = document.getElementById('fielder5');
 fielder5but.addEventListener('click', setfielder5);
 function setfielder5 (event){
 let fielder5=document.getElementById('fielder5').innerHTML;
 let f5=fielder5.replace(" ","\\n")
-document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+f5+'"}]}' ;
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+f5+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'"}]}';
 }
 var fielder6but = document.getElementById('fielder6');
 fielder6but.addEventListener('click', setfielder6);
 function setfielder6 (event){
 let fielder6=document.getElementById('fielder6').innerHTML;
 let f6=fielder6.replace(" ","\\n")
-document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+f6+'"}]}' ;
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+f6+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'"}]}';
 }
 var fielder7but = document.getElementById('fielder7');
 fielder7but.addEventListener('click', setfielder7);
 function setfielder7 (event){
 let fielder7=document.getElementById('fielder7').innerHTML;
 let f7=fielder7.replace(" ","\\n")
-document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+f7+'"}]}' ;
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+f7+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'"}]}';
 }
 var fielder8but = document.getElementById('fielder8');
 fielder8but.addEventListener('click', setfielder8);
 function setfielder8 (event){
 let fielder8=document.getElementById('fielder8').innerHTML;
 let f8=fielder8.replace(" ","\\n")
-document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+f8+'"}]}' ;
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+f8+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'"}]}';
 }
 var fielder9but = document.getElementById('fielder9');
 fielder9but.addEventListener('click', setfielder9);
 function setfielder9 (event){
 let fielder9=document.getElementById('fielder9').innerHTML;
 let f9=fielder9.replace(" ","\\n")
-document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+f9+'"}]}' ;
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+f9+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'"}]}';
 }
 var fielder10but = document.getElementById('fielder10');
 fielder10but.addEventListener('click', setfielder10);
 function setfielder10 (event){
 let fielder10=document.getElementById('fielder10').innerHTML;
 let f10=fielder10.replace(" ","\\n")
-document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+f10+'"}]}' ;
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+f10+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'"}]}';
 }
 var fielder11but = document.getElementById('fielder11');
 fielder11but.addEventListener('click', setfielder11);
 function setfielder11 (event){
 let fielder11=document.getElementById('fielder11').innerHTML;
 let f11=fielder11.replace(" ","\\n")
-document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+f11+'"}]}' ;
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+f11+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'"}]}';
 }
 var fielder12but = document.getElementById('fielder12');
 fielder12but.addEventListener('click', setfielder12);
 function setfielder12 (event){
 let fielder12=document.getElementById('fielder12').innerHTML;
 let f12=fielder12.replace(" ","\\n")
-document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+f12+'"}]}' ;
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+f12+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'"}]}';
 }
 var fielder13but = document.getElementById('fielder13');
 fielder13but.addEventListener('click', setfielder13);
 function setfielder13 (event){
 let fielder13=document.getElementById('fielder13').innerHTML;
 let f13=fielder13.replace(" ","\\n")
-document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+f13+'"}]}' ;
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+f13+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'"}]}';
 }
 
 /*FIELDERS*/
