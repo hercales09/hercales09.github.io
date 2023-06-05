@@ -252,9 +252,9 @@ var clearf = document.getElementById('clearfielder');
 clearf.addEventListener('click', fielderclear);
 function fielderclear (event){
 document.getElementById('FIELDER').innerHTML ="";
-var globalfielder="";
-var fielderimg="";
-var globalfieldpos="40";
+globalfielder="";
+fielderimg="";
+globalfieldpos="40";
 }
 
 var fielder1but = document.getElementById('fielder1');
@@ -387,9 +387,9 @@ document.getElementById('indicator').style.backgroundColor="#3fd300";
   if (countdown===11)
   {stopCount();document.getElementById('data').innerHTML ="";
   document.getElementById('FIELDER').innerHTML ="";
-  var globalfielder="";
-var fielderimg="";
-var globalfieldpos="40";}
+ globalfielder="";
+fielderimg="";
+globalfieldpos="40";}
 }
   }
 }
@@ -406,9 +406,9 @@ document.getElementById('indicator').style.backgroundColor="#3fd300";
   if (countdown===12)
   {stopCount();document.getElementById('data').innerHTML ="";
   document.getElementById('FIELDER').innerHTML ="";
-  var globalfielder="";
-var fielderimg="";
-var globalfieldpos="40";
+globalfielder="";
+fielderimg="";
+globalfieldpos="40";
   }
 }
   }
@@ -423,6 +423,9 @@ function forceclearstopCount() {
 document.getElementById('indicator').style.backgroundColor="black";
 document.getElementById('data').innerHTML ="";
 document.getElementById('FIELDER').innerHTML ="";
+globalfielder="";
+fielderimg="";
+globalfieldpos="40";
   clearTimeout(timeout);
   countdown = 0;
   timer_on = 0;
