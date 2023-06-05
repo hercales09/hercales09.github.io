@@ -123,6 +123,27 @@
 <p id="colora" style="font-weight:bolder;color:white;font-size:10px; margin-top:2px;position:absolute;top:670px;left:770px;">RIGHT HANDER</p>
 </body>
 <script>
+let plnamesarray;
+let plphotosarray;
+let fielderindex;
+let plimg="";
+const xhr = new XMLHttpRequest();
+xhr.open("GET", "https://sheets.googleapis.com/v4/spreadsheets/1odIgvLAuBpcCWtBo0BgB6AQ647lvo_YmuS1ChE-YlNw/values/Sheet1!K106:K108?key=AIzaSyCwf9cJDahOZ24or0sCieKiB4Harqvlds0");
+xhr.send();
+xhr.responseType = "json";
+xhr.onload = () => {
+  if (xhr.readyState == 4 && xhr.status == 200) {
+    console.log(xhr.response);
+	plnamesarray= JSON.parse("["+xhr.response.values[1][0]+"]");
+	plphotosarray=JSON.parse("["+xhr.response.values[2][0]+"]");
+	
+console.log(plnamesarray+plphotosarray)
+  } else {
+    console.log(`Error: ${xhr.status}`);
+  }
+};
+
+
 var colo=document.getElementById('colmark');
 colo.addEventListener('input', colorprint)
 function colorprint(event){
@@ -156,95 +177,97 @@ document.getElementById('fielder13').innerHTML =fielderarray[12]
 }
 
 function sendfielderdata(){
+fielderindex=plnamesarray.findIndex((plnamesarray) => plnamesarray === globalfielder);
+plimg=plphotosarray[fielderindex]; if(plimg===-1||plimg===undefined){plimg=""; console.log("playerimage not matched")}
 if (globalfieldpos==="1"){
-document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-7.9'+'","photoypos":"'+'-42.7'+'","photosize":"'+'76.3'+'","locxpos":"'+'-8.4'+'","locypos":"'+'-14.2'+'","locxsize":"'+'81.0'+'","namxpos":"'+'-8.7'+'","namypos":"'+'-12.4'+'","namxsize":"'+'88.0'+'","namysize":"'+'88.0'+'","locysize":"'+'81.0'+'","rotation":"'+'0'+'","plimg":"'+'https://ik.imagekit.io/ctmfcct2/riley2_0Q_8Aqlx9.png?updatedAt=1683099436377'+'"}]}';
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-7.9'+'","photoypos":"'+'-42.7'+'","photosize":"'+'76.3'+'","locxpos":"'+'-8.4'+'","locypos":"'+'-14.2'+'","locxsize":"'+'81.0'+'","namxpos":"'+'-8.7'+'","namypos":"'+'-12.4'+'","namxsize":"'+'88.0'+'","namysize":"'+'88.0'+'","locysize":"'+'81.0'+'","rotation":"'+'0'+'","plimg":"'+plimg+'"}]}';
 }
 if (globalfieldpos==="2"){
-document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-8.9'+'","photoypos":"'+'-40.5'+'","photosize":"'+'92.21'+'","locxpos":"'+'-16.6'+'","locypos":"'+'-58.7'+'","locxsize":"'+'94.5'+'","namxpos":"'+'18.6'+'","namypos":"'+'-6.7'+'","namxsize":"'+'100.0'+'","namysize":"'+'100.0'+'","locysize":"'+'94.5'+'","rotation":"'+'97.1'+'","plimg":"'+'https://ik.imagekit.io/ctmfcct2/riley2_0Q_8Aqlx9.png?updatedAt=1683099436377'+'"}]}';
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-8.9'+'","photoypos":"'+'-40.5'+'","photosize":"'+'92.21'+'","locxpos":"'+'-16.6'+'","locypos":"'+'-58.7'+'","locxsize":"'+'94.5'+'","namxpos":"'+'18.6'+'","namypos":"'+'-6.7'+'","namxsize":"'+'100.0'+'","namysize":"'+'100.0'+'","locysize":"'+'94.5'+'","rotation":"'+'97.1'+'","plimg":"'+plimg+'"}]}';
 }
 if (globalfieldpos==="3"){
-document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-17.9'+'","photoypos":"'+'-40.2'+'","photosize":"'+'92.21'+'","locxpos":"'+'-28.9'+'","locypos":"'+'-35.1'+'","locxsize":"'+'94.5'+'","namxpos":"'+'9.7'+'","namypos":"'+'-6.7'+'","namxsize":"'+'100.0'+'","namysize":"'+'100.0'+'","locysize":"'+'94.5'+'","rotation":"'+'57.2'+'","plimg":"'+'https://ik.imagekit.io/ctmfcct2/riley2_0Q_8Aqlx9.png?updatedAt=1683099436377'+'"}]}';
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-17.9'+'","photoypos":"'+'-40.2'+'","photosize":"'+'92.21'+'","locxpos":"'+'-28.9'+'","locypos":"'+'-35.1'+'","locxsize":"'+'94.5'+'","namxpos":"'+'9.7'+'","namypos":"'+'-6.7'+'","namxsize":"'+'100.0'+'","namysize":"'+'100.0'+'","locysize":"'+'94.5'+'","rotation":"'+'57.2'+'","plimg":"'+plimg+'"}]}';
 }
 if (globalfieldpos==="4"){
-document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-25.5'+'","photoypos":"'+'-35.0'+'","photosize":"'+'92.21'+'","locxpos":"'+'-33.8'+'","locypos":"'+'-14.7'+'","locxsize":"'+'94.5'+'","namxpos":"'+'2.2'+'","namypos":"'+'-1.0'+'","namxsize":"'+'100.0'+'","namysize":"'+'100.0'+'","locysize":"'+'94.5'+'","rotation":"'+'31.5'+'","plimg":"'+'https://ik.imagekit.io/ctmfcct2/riley2_0Q_8Aqlx9.png?updatedAt=1683099436377'+'"}]}';
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-25.5'+'","photoypos":"'+'-35.0'+'","photosize":"'+'92.21'+'","locxpos":"'+'-33.8'+'","locypos":"'+'-14.7'+'","locxsize":"'+'94.5'+'","namxpos":"'+'2.2'+'","namypos":"'+'-1.0'+'","namxsize":"'+'100.0'+'","namysize":"'+'100.0'+'","locysize":"'+'94.5'+'","rotation":"'+'31.5'+'","plimg":"'+plimg+'"}]}';
 }
 if (globalfieldpos==="5"){
-document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-32.3'+'","photoypos":"'+'-24.4'+'","photosize":"'+'92.21'+'","locxpos":"'+'-28.2'+'","locypos":"'+'11.6'+'","locxsize":"'+'94.5'+'","namxpos":"'+'-7.3'+'","namypos":"'+'-1.0'+'","namxsize":"'+'100.0'+'","namysize":"'+'100.0'+'","locysize":"'+'94.5'+'","rotation":"'+'-13.3'+'","plimg":"'+'https://ik.imagekit.io/ctmfcct2/riley2_0Q_8Aqlx9.png?updatedAt=1683099436377'+'"}]}';
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-32.3'+'","photoypos":"'+'-24.4'+'","photosize":"'+'92.21'+'","locxpos":"'+'-28.2'+'","locypos":"'+'11.6'+'","locxsize":"'+'94.5'+'","namxpos":"'+'-7.3'+'","namypos":"'+'-1.0'+'","namxsize":"'+'100.0'+'","namysize":"'+'100.0'+'","locysize":"'+'94.5'+'","rotation":"'+'-13.3'+'","plimg":"'+plimg+'"}]}';
 }
 if (globalfieldpos==="6"){
-document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-32.3'+'","photoypos":"'+'-14.4'+'","photosize":"'+'92.21'+'","locxpos":"'+'-28.2'+'","locypos":"'+'21.7'+'","locxsize":"'+'94.5'+'","namxpos":"'+'-10.9'+'","namypos":"'+'8.2'+'","namxsize":"'+'100.0'+'","namysize":"'+'100.0'+'","locysize":"'+'94.5'+'","rotation":"'+'-13.3'+'","plimg":"'+'https://ik.imagekit.io/ctmfcct2/riley2_0Q_8Aqlx9.png?updatedAt=1683099436377'+'"}]}';
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-32.3'+'","photoypos":"'+'-14.4'+'","photosize":"'+'92.21'+'","locxpos":"'+'-28.2'+'","locypos":"'+'21.7'+'","locxsize":"'+'94.5'+'","namxpos":"'+'-10.9'+'","namypos":"'+'8.2'+'","namxsize":"'+'100.0'+'","namysize":"'+'100.0'+'","locysize":"'+'94.5'+'","rotation":"'+'-13.3'+'","plimg":"'+plimg+'"}]}';
 }
 if (globalfieldpos==="7"){
-document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-28.8'+'","photoypos":"'+'-1.7'+'","photosize":"'+'92.21'+'","locxpos":"'+'-24.7'+'","locypos":"'+'34.4'+'","locxsize":"'+'94.5'+'","namxpos":"'+'-12.2'+'","namypos":"'+'16.9'+'","namxsize":"'+'85.7'+'","namysize":"'+'85.7'+'","locysize":"'+'94.5'+'","rotation":"'+'-13.3'+'","plimg":"'+'https://ik.imagekit.io/ctmfcct2/riley2_0Q_8Aqlx9.png?updatedAt=1683099436377'+'"}]}';
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-28.8'+'","photoypos":"'+'-1.7'+'","photosize":"'+'92.21'+'","locxpos":"'+'-24.7'+'","locypos":"'+'34.4'+'","locxsize":"'+'94.5'+'","namxpos":"'+'-12.2'+'","namypos":"'+'16.9'+'","namxsize":"'+'85.7'+'","namysize":"'+'85.7'+'","locysize":"'+'94.5'+'","rotation":"'+'-13.3'+'","plimg":"'+plimg+'"}]}';
 }
 if (globalfieldpos==="8"){
-document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-27.6'+'","photoypos":"'+'21.1'+'","photosize":"'+'92.21'+'","locxpos":"'+'-0.7'+'","locypos":"'+'37.7'+'","locxsize":"'+'94.5'+'","namxpos":"'+'-11.4'+'","namypos":"'+'63.6'+'","namxsize":"'+'91.8'+'","namysize":"'+'91.8'+'","locysize":"'+'94.5'+'","rotation":"'+'-91.5'+'","plimg":"'+'https://ik.imagekit.io/ctmfcct2/riley2_0Q_8Aqlx9.png?updatedAt=1683099436377'+'"}]}';
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-27.6'+'","photoypos":"'+'21.1'+'","photosize":"'+'92.21'+'","locxpos":"'+'-0.7'+'","locypos":"'+'37.7'+'","locxsize":"'+'94.5'+'","namxpos":"'+'-11.4'+'","namypos":"'+'63.6'+'","namxsize":"'+'91.8'+'","namysize":"'+'91.8'+'","locysize":"'+'94.5'+'","rotation":"'+'-91.5'+'","plimg":"'+plimg+'"}]}';
 }
 if (globalfieldpos==="9"){
-document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-14.6'+'","photoypos":"'+'20.1'+'","photosize":"'+'92.21'+'","locxpos":"'+'-0.4'+'","locypos":"'+'55.0'+'","locxsize":"'+'94.5'+'","namxpos":"'+'-10.4'+'","namypos":"'+'41.2'+'","namxsize":"'+'96.4'+'","namysize":"'+'96.4'+'","locysize":"'+'94.5'+'","rotation":"'+'-43.0'+'","plimg":"'+'https://ik.imagekit.io/ctmfcct2/riley2_0Q_8Aqlx9.png?updatedAt=1683099436377'+'"}]}';
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-14.6'+'","photoypos":"'+'20.1'+'","photosize":"'+'92.21'+'","locxpos":"'+'-0.4'+'","locypos":"'+'55.0'+'","locxsize":"'+'94.5'+'","namxpos":"'+'-10.4'+'","namypos":"'+'41.2'+'","namxsize":"'+'96.4'+'","namysize":"'+'96.4'+'","locysize":"'+'94.5'+'","rotation":"'+'-43.0'+'","plimg":"'+plimg+'"}]}';
 }
 if (globalfieldpos==="10"){
-document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'8.9'+'","photoypos":"'+'20.1'+'","photosize":"'+'92.21'+'","locxpos":"'+'-0.7'+'","locypos":"'+'7.8'+'","locxsize":"'+'94.5'+'","namxpos":"'+'19.2'+'","namypos":"'+'64.2'+'","namxsize":"'+'96.4'+'","namysize":"'+'96.4'+'","locysize":"'+'94.5'+'","rotation":"'+'86.0","plimg":"'+'https://ik.imagekit.io/ctmfcct2/riley2_0Q_8Aqlx9.png?updatedAt=1683099436377'+'"}]}';
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'8.9'+'","photoypos":"'+'20.1'+'","photosize":"'+'92.21'+'","locxpos":"'+'-0.7'+'","locypos":"'+'7.8'+'","locxsize":"'+'94.5'+'","namxpos":"'+'19.2'+'","namypos":"'+'64.2'+'","namxsize":"'+'96.4'+'","namysize":"'+'96.4'+'","locysize":"'+'94.5'+'","rotation":"'+'86.0","plimg":"'+plimg+'"}]}';
 }
 if (globalfieldpos==="11"){
-document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'14.6'+'","photoypos":"'+'-2.1'+'","photosize":"'+'92.21'+'","locxpos":"'+'5.4'+'","locypos":"'+'14.3'+'","locxsize":"'+'94.5'+'","namxpos":"'+'19.6'+'","namypos":"'+'19.1'+'","namxsize":"'+'93.6'+'","namysize":"'+'93.6'+'","locysize":"'+'94.5'+'","rotation":"'+'38.1'+'","plimg":"'+'https://ik.imagekit.io/ctmfcct2/riley2_0Q_8Aqlx9.png?updatedAt=1683099436377'+'"}]}';
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'14.6'+'","photoypos":"'+'-2.1'+'","photosize":"'+'92.21'+'","locxpos":"'+'5.4'+'","locypos":"'+'14.3'+'","locxsize":"'+'94.5'+'","namxpos":"'+'19.6'+'","namypos":"'+'19.1'+'","namxsize":"'+'93.6'+'","namysize":"'+'93.6'+'","locysize":"'+'94.5'+'","rotation":"'+'38.1'+'","plimg":"'+plimg+'"}]}';
 }
 if (globalfieldpos==="12"){
-document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'14.6'+'","photoypos":"'+'-20.3'+'","photosize":"'+'92.21'+'","locxpos":"'+'9.7'+'","locypos":"'+'6.9'+'","locxsize":"'+'94.5'+'","namxpos":"'+'19.5'+'","namypos":"'+'1.5'+'","namxsize":"'+'94.9'+'","namysize":"'+'94.9'+'","locysize":"'+'94.5'+'","rotation":"'+'16.9'+'","plimg":"'+'https://ik.imagekit.io/ctmfcct2/riley2_0Q_8Aqlx9.png?updatedAt=1683099436377'+'"}]}';
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'14.6'+'","photoypos":"'+'-20.3'+'","photosize":"'+'92.21'+'","locxpos":"'+'9.7'+'","locypos":"'+'6.9'+'","locxsize":"'+'94.5'+'","namxpos":"'+'19.5'+'","namypos":"'+'1.5'+'","namxsize":"'+'94.9'+'","namysize":"'+'94.9'+'","locysize":"'+'94.5'+'","rotation":"'+'16.9'+'","plimg":"'+plimg+'"}]}';
 }
 if (globalfieldpos==="13"){
-document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'12.9'+'","photoypos":"'+'-34.5'+'","photosize":"'+'92.21'+'","locxpos":"'+'7.8'+'","locypos":"'+'-7.7'+'","locxsize":"'+'94.5'+'","namxpos":"'+'12.6'+'","namypos":"'+'-2.8'+'","namxsize":"'+'94.9'+'","namysize":"'+'94.9'+'","locysize":"'+'94.5'+'","rotation":"'+'16.9'+'","plimg":"'+'https://ik.imagekit.io/ctmfcct2/riley2_0Q_8Aqlx9.png?updatedAt=1683099436377'+'"}]}';
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'12.9'+'","photoypos":"'+'-34.5'+'","photosize":"'+'92.21'+'","locxpos":"'+'7.8'+'","locypos":"'+'-7.7'+'","locxsize":"'+'94.5'+'","namxpos":"'+'12.6'+'","namypos":"'+'-2.8'+'","namxsize":"'+'94.9'+'","namysize":"'+'94.9'+'","locysize":"'+'94.5'+'","rotation":"'+'16.9'+'","plimg":"'+plimg+'"}]}';
 }
 if (globalfieldpos==="14"){
-document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-0.6'+'","photoypos":"'+'-41.2'+'","photosize":"'+'88.51'+'","locxpos":"'+'17.2'+'","locypos":"'+'-8.8'+'","locxsize":"'+'94.5'+'","namxpos":"'+'-1.7'+'","namypos":"'+'-7.9'+'","namxsize":"'+'100.1'+'","namysize":"'+'100.1'+'","locysize":"'+'94.5'+'","rotation":"'+'-54.8'+'","plimg":"'+'https://ik.imagekit.io/ctmfcct2/riley2_0Q_8Aqlx9.png?updatedAt=1683099436377'+'"}]}';
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-0.6'+'","photoypos":"'+'-41.2'+'","photosize":"'+'88.51'+'","locxpos":"'+'17.2'+'","locypos":"'+'-8.8'+'","locxsize":"'+'94.5'+'","namxpos":"'+'-1.7'+'","namypos":"'+'-7.9'+'","namxsize":"'+'100.1'+'","namysize":"'+'100.1'+'","locysize":"'+'94.5'+'","rotation":"'+'-54.8'+'","plimg":"'+plimg+'"}]}';
 }
 if (globalfieldpos==="15"){
-document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-9.4'+'","photoypos":"'+'-41.5'+'","photosize":"'+'88.51'+'","locxpos":"'+'16.0'+'","locypos":"'+'-21.8'+'","locxsize":"'+'94.5'+'","namxpos":"'+'-9.9'+'","namypos":"'+'-9.2'+'","namxsize":"'+'96.8'+'","namysize":"'+'96.8'+'","locysize":"'+'94.5'+'","rotation":"'+'-84.9'+'","plimg":"'+'https://ik.imagekit.io/ctmfcct2/riley2_0Q_8Aqlx9.png?updatedAt=1683099436377'+'"}]}';
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-9.4'+'","photoypos":"'+'-41.5'+'","photosize":"'+'88.51'+'","locxpos":"'+'16.0'+'","locypos":"'+'-21.8'+'","locxsize":"'+'94.5'+'","namxpos":"'+'-9.9'+'","namypos":"'+'-9.2'+'","namxsize":"'+'96.8'+'","namysize":"'+'96.8'+'","locysize":"'+'94.5'+'","rotation":"'+'-84.9'+'","plimg":"'+plimg+'"}]}';
 }
 if (globalfieldpos==="16"){
-document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-3.0'+'","photoypos":"'+'-41.2'+'","photosize":"'+'81.1'+'","locxpos":"'+'-11.1'+'","locypos":"'+'-59.4'+'","locxsize":"'+'90.4'+'","namxpos":"'+'21.2'+'","namypos":"'+'-11.9'+'","namxsize":"'+'88.1'+'","namysize":"'+'88.1'+'","locysize":"'+'90.4'+'","rotation":"'+'97.1'+'","plimg":"'+'https://ik.imagekit.io/ctmfcct2/riley2_0Q_8Aqlx9.png?updatedAt=1683099436377'+'"}]}';
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-3.0'+'","photoypos":"'+'-41.2'+'","photosize":"'+'81.1'+'","locxpos":"'+'-11.1'+'","locypos":"'+'-59.4'+'","locxsize":"'+'90.4'+'","namxpos":"'+'21.2'+'","namypos":"'+'-11.9'+'","namxsize":"'+'88.1'+'","namysize":"'+'88.1'+'","locysize":"'+'90.4'+'","rotation":"'+'97.1'+'","plimg":"'+plimg+'"}]}';
 }
 if (globalfieldpos==="17"){
-document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-12.2'+'","photoypos":"'+'-42.6'+'","photosize":"'+'80.8'+'","locxpos":"'+'-12.4'+'","locypos":"'+'-13.8'+'","locxsize":"'+'82.0'+'","namxpos":"'+'12.5'+'","namypos":"'+'-9.6'+'","namxsize":"'+'92.9'+'","namysize":"'+'92.9'+'","locysize":"'+'82.0'+'","rotation":"'+'0'+'","plimg":"'+'https://ik.imagekit.io/ctmfcct2/riley2_0Q_8Aqlx9.png?updatedAt=1683099436377'+'"}]}';
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-12.2'+'","photoypos":"'+'-42.6'+'","photosize":"'+'80.8'+'","locxpos":"'+'-12.4'+'","locypos":"'+'-13.8'+'","locxsize":"'+'82.0'+'","namxpos":"'+'12.5'+'","namypos":"'+'-9.6'+'","namxsize":"'+'92.9'+'","namysize":"'+'92.9'+'","locysize":"'+'82.0'+'","rotation":"'+'0'+'","plimg":"'+plimg+'"}]}';
 }
 if (globalfieldpos==="18"){
-document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-17.3'+'","photoypos":"'+'-41.1'+'","photosize":"'+'95.91'+'","locxpos":"'+'-17.6'+'","locypos":"'+'-6.6'+'","locxsize":"'+'99.7'+'","namxpos":"'+'11.4'+'","namypos":"'+'-6.5'+'","namxsize":"'+'103.5'+'","namysize":"'+'103.5'+'","locysize":"'+'99.7'+'","rotation":"'+'0'+'","plimg":"'+'https://ik.imagekit.io/ctmfcct2/riley2_0Q_8Aqlx9.png?updatedAt=1683099436377'+'"}]}';
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-17.3'+'","photoypos":"'+'-41.1'+'","photosize":"'+'95.91'+'","locxpos":"'+'-17.6'+'","locypos":"'+'-6.6'+'","locxsize":"'+'99.7'+'","namxpos":"'+'11.4'+'","namypos":"'+'-6.5'+'","namxsize":"'+'103.5'+'","namysize":"'+'103.5'+'","locysize":"'+'99.7'+'","rotation":"'+'0'+'","plimg":"'+plimg+'"}]}';
 }
 if (globalfieldpos==="19"){
-document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-21.3'+'","photoypos":"'+'-38.5'+'","photosize":"'+'122.57'+'","locxpos":"'+'-20.9'+'","locypos":"'+'3.2'+'","locxsize":"'+'116.9'+'","namxpos":"'+'10.3'+'","namypos":"'+'-2.7'+'","namxsize":"'+'103.5'+'","namysize":"'+'103.5'+'","locysize":"'+'116.9'+'","rotation":"'+'0'+'","plimg":"'+'https://ik.imagekit.io/ctmfcct2/riley2_0Q_8Aqlx9.png?updatedAt=1683099436377'+'"}]}';
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-21.3'+'","photoypos":"'+'-38.5'+'","photosize":"'+'122.57'+'","locxpos":"'+'-20.9'+'","locypos":"'+'3.2'+'","locxsize":"'+'116.9'+'","namxpos":"'+'10.3'+'","namypos":"'+'-2.7'+'","namxsize":"'+'103.5'+'","namysize":"'+'103.5'+'","locysize":"'+'116.9'+'","rotation":"'+'0'+'","plimg":"'+plimg+'"}]}';
 }
 if (globalfieldpos==="20"){
-document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-20.5'+'","photoypos":"'+'-21.5'+'","photosize":"'+'104.06'+'","locxpos":"'+'-21.0'+'","locypos":"'+'16.3'+'","locxsize":"'+'109.1'+'","namxpos":"'+'-5.3'+'","namypos":"'+'1.1'+'","namxsize":"'+'103.5'+'","namysize":"'+'103.5'+'","locysize":"'+'109.1'+'","rotation":"'+'0'+'","plimg":"'+'https://ik.imagekit.io/ctmfcct2/riley2_0Q_8Aqlx9.png?updatedAt=1683099436377'+'"}]}';
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-20.5'+'","photoypos":"'+'-21.5'+'","photosize":"'+'104.06'+'","locxpos":"'+'-21.0'+'","locypos":"'+'16.3'+'","locxsize":"'+'109.1'+'","namxpos":"'+'-5.3'+'","namypos":"'+'1.1'+'","namxsize":"'+'103.5'+'","namysize":"'+'103.5'+'","locysize":"'+'109.1'+'","rotation":"'+'0'+'","plimg":"'+plimg+'"}]}';
 }
 if (globalfieldpos==="21"){
-document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-8.3'+'","photoypos":"'+'-1.6'+'","photosize":"'+'92.21'+'","locxpos":"'+'-19.6'+'","locypos":"'+'-1.6'+'","locxsize":"'+'94.9'+'","namxpos":"'+'18.5'+'","namypos":"'+'30.5'+'","namxsize":"'+'94.3'+'","namysize":"'+'94.3'+'","locysize":"'+'94.9'+'","rotation":"'+'65.8'+'","plimg":"'+'https://ik.imagekit.io/ctmfcct2/riley2_0Q_8Aqlx9.png?updatedAt=1683099436377'+'"}]}';
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-8.3'+'","photoypos":"'+'-1.6'+'","photosize":"'+'92.21'+'","locxpos":"'+'-19.6'+'","locypos":"'+'-1.6'+'","locxsize":"'+'94.9'+'","namxpos":"'+'18.5'+'","namypos":"'+'30.5'+'","namxsize":"'+'94.3'+'","namysize":"'+'94.3'+'","locysize":"'+'94.9'+'","rotation":"'+'65.8'+'","plimg":"'+plimg+'"}]}';
 }
 if (globalfieldpos==="22"){
-document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-4.6'+'","photoypos":"'+'-1.4'+'","photosize":"'+'89.99'+'","locxpos":"'+'-16.0'+'","locypos":"'+'2.5'+'","locxsize":"'+'94.9'+'","namxpos":"'+'19.3'+'","namypos":"'+'20.0'+'","namxsize":"'+'94.3'+'","namysize":"'+'94.3'+'","locysize":"'+'94.9'+'","rotation":"'+'59.1'+'","plimg":"'+'https://ik.imagekit.io/ctmfcct2/riley2_0Q_8Aqlx9.png?updatedAt=1683099436377'+'"}]}';
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-4.6'+'","photoypos":"'+'-1.4'+'","photosize":"'+'89.99'+'","locxpos":"'+'-16.0'+'","locypos":"'+'2.5'+'","locxsize":"'+'94.9'+'","namxpos":"'+'19.3'+'","namypos":"'+'20.0'+'","namxsize":"'+'94.3'+'","namysize":"'+'94.3'+'","locysize":"'+'94.9'+'","rotation":"'+'59.1'+'","plimg":"'+plimg+'"}]}';
 }
 if (globalfieldpos==="23"){
-document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-14.8'+'","photoypos":"'+'-21.0'+'","photosize":"'+'92.95'+'","locxpos":"'+'1'+'","locypos":"'+'14.6'+'","locxsize":"'+'96.9'+'","namxpos":"'+'-10.1'+'","namypos":"'+'1'+'","namxsize":"'+'96.8'+'","namysize":"'+'96.8'+'","locysize":"'+'96.9'+'","rotation":"'+'-47.0'+'","plimg":"'+'https://ik.imagekit.io/ctmfcct2/riley2_0Q_8Aqlx9.png?updatedAt=1683099436377'+'"}]}';
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-14.8'+'","photoypos":"'+'-21.0'+'","photosize":"'+'92.95'+'","locxpos":"'+'1'+'","locypos":"'+'14.6'+'","locxsize":"'+'96.9'+'","namxpos":"'+'-10.1'+'","namypos":"'+'1'+'","namxsize":"'+'96.8'+'","namysize":"'+'96.8'+'","locysize":"'+'96.9'+'","rotation":"'+'-47.0'+'","plimg":"'+plimg+'"}]}';
 }
 if (globalfieldpos==="24"){
-document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-10.5'+'","photoypos":"'+'-1.5'+'","photosize":"'+'95.91'+'","locxpos":"'+'11.9'+'","locypos":"'+'27.1'+'","locxsize":"'+'94.9'+'","namxpos":"'+'-10.4'+'","namypos":"'+'30.5'+'","namxsize":"'+'94.3'+'","namysize":"'+'94.3'+'","locysize":"'+'94.9'+'","rotation":"'+'-68.5'+'","plimg":"'+'https://ik.imagekit.io/ctmfcct2/riley2_0Q_8Aqlx9.png?updatedAt=1683099436377'+'"}]}';
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-10.5'+'","photoypos":"'+'-1.5'+'","photosize":"'+'95.91'+'","locxpos":"'+'11.9'+'","locypos":"'+'27.1'+'","locxsize":"'+'94.9'+'","namxpos":"'+'-10.4'+'","namypos":"'+'30.5'+'","namxsize":"'+'94.3'+'","namysize":"'+'94.3'+'","locysize":"'+'94.9'+'","rotation":"'+'-68.5'+'","plimg":"'+plimg+'"}]}';
 }
 if (globalfieldpos==="25"){
-document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'0.6'+'","photoypos":"'+'-17.8'+'","photosize":"'+'88.51'+'","locxpos":"'+'2.7'+'","locypos":"'+'17.0'+'","locxsize":"'+'94.9'+'","namxpos":"'+'19.3'+'","namypos":"'+'2.9'+'","namxsize":"'+'94.3'+'","namysize":"'+'94.3'+'","locysize":"'+'94.9'+'","rotation":"'+'-8.4'+'","plimg":"'+'https://ik.imagekit.io/ctmfcct2/riley2_0Q_8Aqlx9.png?updatedAt=1683099436377'+'"}]}';
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'0.6'+'","photoypos":"'+'-17.8'+'","photosize":"'+'88.51'+'","locxpos":"'+'2.7'+'","locypos":"'+'17.0'+'","locxsize":"'+'94.9'+'","namxpos":"'+'19.3'+'","namypos":"'+'2.9'+'","namxsize":"'+'94.3'+'","namysize":"'+'94.3'+'","locysize":"'+'94.9'+'","rotation":"'+'-8.4'+'","plimg":"'+plimg+'"}]}';
 }
 if (globalfieldpos==="26"){
-document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-0.7'+'","photoypos":"'+'-35.9'+'","photosize":"'+'100.0'+'","locxpos":"'+'-0.7'+'","locypos":"'+'-1.1'+'","locxsize":"'+'98.9'+'","namxpos":"'+'-0.3'+'","namypos":"'+'-2.7'+'","namxsize":"'+'96.7'+'","namysize":"'+'96.7'+'","locysize":"'+'98.9'+'","rotation":"'+'0'+'","plimg":"'+'https://ik.imagekit.io/ctmfcct2/riley2_0Q_8Aqlx9.png?updatedAt=1683099436377'+'"}]}';
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-0.7'+'","photoypos":"'+'-35.9'+'","photosize":"'+'100.0'+'","locxpos":"'+'-0.7'+'","locypos":"'+'-1.1'+'","locxsize":"'+'98.9'+'","namxpos":"'+'-0.3'+'","namypos":"'+'-2.7'+'","namxsize":"'+'96.7'+'","namysize":"'+'96.7'+'","locysize":"'+'98.9'+'","rotation":"'+'0'+'","plimg":"'+plimg+'"}]}';
 }
 if (globalfieldpos==="27"){
-document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-1.4'+'","photoypos":"'+'-40.7'+'","photosize":"'+'92.95'+'","locxpos":"'+'-1.8'+'","locypos":"'+'-7.1'+'","locxsize":"'+'96.9'+'","namxpos":"'+'-1.7'+'","namypos":"'+'-8.2'+'","namxsize":"'+'96.8'+'","namysize":"'+'96.8'+'","locysize":"'+'96.9'+'","rotation":"'+'0'+'","plimg":"'+'https://ik.imagekit.io/ctmfcct2/riley2_0Q_8Aqlx9.png?updatedAt=1683099436377'+'"}]}';
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-1.4'+'","photoypos":"'+'-40.7'+'","photosize":"'+'92.95'+'","locxpos":"'+'-1.8'+'","locypos":"'+'-7.1'+'","locxsize":"'+'96.9'+'","namxpos":"'+'-1.7'+'","namypos":"'+'-8.2'+'","namxsize":"'+'96.8'+'","namysize":"'+'96.8'+'","locysize":"'+'96.9'+'","rotation":"'+'0'+'","plimg":"'+plimg+'"}]}';
 }
 if (globalfieldpos==="28"){
-document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-9.1'+'","photoypos":"'+'-40.7'+'","photosize":"'+'92.95'+'","locxpos":"'+'6.8'+'","locypos":"'+'-5.6'+'","locxsize":"'+'96.9'+'","namxpos":"'+'-9.4'+'","namypos":"'+'-8.2'+'","namxsize":"'+'96.8'+'","namysize":"'+'96.8'+'","locysize":"'+'96.9'+'","rotation":"'+'-47.0'+'","plimg":"'+'https://ik.imagekit.io/ctmfcct2/riley2_0Q_8Aqlx9.png?updatedAt=1683099436377'+'"}]}';
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-9.1'+'","photoypos":"'+'-40.7'+'","photosize":"'+'92.95'+'","locxpos":"'+'6.8'+'","locypos":"'+'-5.6'+'","locxsize":"'+'96.9'+'","namxpos":"'+'-9.4'+'","namypos":"'+'-8.2'+'","namxsize":"'+'96.8'+'","namysize":"'+'96.8'+'","locysize":"'+'96.9'+'","rotation":"'+'-47.0'+'","plimg":"'+plimg+'"}]}';
 }
 if (globalfieldpos==="29"){
-document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'9.8'+'","photoypos":"'+'0.0'+'","photosize":"'+'92.95'+'","locxpos":"'+'8.9'+'","locypos":"'+'34.2'+'","locxsize":"'+'100.0'+'","namxpos":"'+'21.2'+'","namypos":"'+'19.8'+'","namxsize":"'+'94.0'+'","namysize":"'+'94.0'+'","locysize":"'+'100.0'+'","rotation":"'+'0'+'","plimg":"'+'https://ik.imagekit.io/ctmfcct2/riley2_0Q_8Aqlx9.png?updatedAt=1683099436377'+'"}]}';
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'9.8'+'","photoypos":"'+'0.0'+'","photosize":"'+'92.95'+'","locxpos":"'+'8.9'+'","locypos":"'+'34.2'+'","locxsize":"'+'100.0'+'","namxpos":"'+'21.2'+'","namypos":"'+'19.8'+'","namxsize":"'+'94.0'+'","namysize":"'+'94.0'+'","locysize":"'+'100.0'+'","rotation":"'+'0'+'","plimg":"'+plimg+'"}]}';
 }
 if (globalfieldpos==="40"){
-document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-18.5'+'","photoypos":"'+'31.2'+'","photosize":"'+'61.85'+'","locxpos":"'+'-18.5'+'","locypos":"'+'53.3'+'","locxsize":"'+'62.8'+'","namxpos":"'+'3.0'+'","namypos":"'+'62.7'+'","namxsize":"'+'86.6'+'","namysize":"'+'86.6'+'","locysize":"'+'62.8'+'","rotation":"'+'0'+'","plimg":"'+'https://ik.imagekit.io/ctmfcct2/riley2_0Q_8Aqlx9.png?updatedAt=1683099436377'+'"}]}';
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-18.5'+'","photoypos":"'+'31.2'+'","photosize":"'+'61.85'+'","locxpos":"'+'-18.5'+'","locypos":"'+'53.3'+'","locxsize":"'+'62.8'+'","namxpos":"'+'3.0'+'","namypos":"'+'62.7'+'","namxsize":"'+'86.6'+'","namysize":"'+'86.6'+'","locysize":"'+'62.8'+'","rotation":"'+'0'+'","plimg":"'+plimg+'"}]}';
 }
 }
 
@@ -389,7 +412,9 @@ document.getElementById('indicator').style.backgroundColor="#3fd300";
   document.getElementById('FIELDER').innerHTML ="";
  globalfielder="";
 fielderimg="";
-globalfieldpos="40";}
+globalfieldpos="40";
+plimg="";
+}
 }
   }
 }
@@ -409,6 +434,7 @@ document.getElementById('indicator').style.backgroundColor="#3fd300";
 globalfielder="";
 fielderimg="";
 globalfieldpos="40";
+plimg="";
   }
 }
   }
@@ -426,6 +452,7 @@ document.getElementById('FIELDER').innerHTML ="";
 globalfielder="";
 fielderimg="";
 globalfieldpos="40";
+plimg="";
   clearTimeout(timeout);
   countdown = 0;
   timer_on = 0;
