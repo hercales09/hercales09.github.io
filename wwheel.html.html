@@ -119,8 +119,17 @@
 <div><button id='bturlsub' style="height:20px; width:70px;position:absolute;top:50px;left:1780px;font-size:12px;font-weight:bold">SUBMIT</button></div>
 <div><button id='fielderssub' style="height:20px; width:70px;position:absolute;top:130px;left:1780px;font-size:12px;font-weight:bold">SUBMIT</button></div>
 <span class="dot" id="indicator" style="height:80px;width:80px;background-color:black;border-radius:50%;z-index:-3;position:absolute;top:110px;left:780px"></span>
+<div><input id="colmark" type="color" id="favcolor" name="favcolor" value="#ff0000" style="width:15px;height:15px;position:absolute;top:650px;left:770px;" ></div>
+<p id="colora" style="font-weight:bolder;color:white;font-size:10px; margin-top:2px;position:absolute;top:670px;left:770px;">RIGHT HANDER</p>
 </body>
 <script>
+var colo=document.getElementById('colmark');
+colo.addEventListener('input', colorprint)
+function colorprint(event){
+var colortemp=document.getElementById('colmark').value;
+document.getElementById('colora').innerHTML = colortemp;
+}
+
 var bgccol="#1f306d";
 var fontcol="#ffffff";
 var colsubmitbut = document.getElementById('colsubmit');
@@ -130,6 +139,9 @@ bgccol= document.getElementById('bowlbgcol').value;
 fontcol= document.getElementById('bowlfontcol').value;
 }
 /*FIELDERS*/
+var globalfielder="";
+var fielderimg="";
+var globalfieldpos="40";
 var fieldersubmit = document.getElementById('fielderssub');
 fieldersubmit.addEventListener('click', fieldersarray);
 function fieldersarray (event){
@@ -143,18 +155,115 @@ document.getElementById('fielder10').innerHTML =fielderarray[9];document.getElem
 document.getElementById('fielder13').innerHTML =fielderarray[12]
 }
 
+function sendfielderdata(){
+if (globalfieldpos==="1"){
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-7.9'+'","photoypos":"'+'-42.7'+'","photosize":"'+'76.3'+'","locxpos":"'+'-8.4'+'","locypos":"'+'-14.2'+'","locxsize":"'+'81.0'+'","namxpos":"'+'-8.7'+'","namypos":"'+'-12.4'+'","namxsize":"'+'88.0'+'","namysize":"'+'88.0'+'","locysize":"'+'81.0'+'","rotation":"'+'0'+'","plimg":"'+'https://ik.imagekit.io/ctmfcct2/riley2_0Q_8Aqlx9.png?updatedAt=1683099436377'+'"}]}';
+}
+if (globalfieldpos==="2"){
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-8.9'+'","photoypos":"'+'-40.5'+'","photosize":"'+'92.21'+'","locxpos":"'+'-16.6'+'","locypos":"'+'-58.7'+'","locxsize":"'+'94.5'+'","namxpos":"'+'18.6'+'","namypos":"'+'-6.7'+'","namxsize":"'+'100.0'+'","namysize":"'+'100.0'+'","locysize":"'+'94.5'+'","rotation":"'+'97.1'+'","plimg":"'+'https://ik.imagekit.io/ctmfcct2/riley2_0Q_8Aqlx9.png?updatedAt=1683099436377'+'"}]}';
+}
+if (globalfieldpos==="3"){
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-17.9'+'","photoypos":"'+'-40.2'+'","photosize":"'+'92.21'+'","locxpos":"'+'-28.9'+'","locypos":"'+'-35.1'+'","locxsize":"'+'94.5'+'","namxpos":"'+'9.7'+'","namypos":"'+'-6.7'+'","namxsize":"'+'100.0'+'","namysize":"'+'100.0'+'","locysize":"'+'94.5'+'","rotation":"'+'57.2'+'","plimg":"'+'https://ik.imagekit.io/ctmfcct2/riley2_0Q_8Aqlx9.png?updatedAt=1683099436377'+'"}]}';
+}
+if (globalfieldpos==="4"){
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-25.5'+'","photoypos":"'+'-35.0'+'","photosize":"'+'92.21'+'","locxpos":"'+'-33.8'+'","locypos":"'+'-14.7'+'","locxsize":"'+'94.5'+'","namxpos":"'+'2.2'+'","namypos":"'+'-1.0'+'","namxsize":"'+'100.0'+'","namysize":"'+'100.0'+'","locysize":"'+'94.5'+'","rotation":"'+'31.5'+'","plimg":"'+'https://ik.imagekit.io/ctmfcct2/riley2_0Q_8Aqlx9.png?updatedAt=1683099436377'+'"}]}';
+}
+if (globalfieldpos==="5"){
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-32.3'+'","photoypos":"'+'-24.4'+'","photosize":"'+'92.21'+'","locxpos":"'+'-28.2'+'","locypos":"'+'11.6'+'","locxsize":"'+'94.5'+'","namxpos":"'+'-7.3'+'","namypos":"'+'-1.0'+'","namxsize":"'+'100.0'+'","namysize":"'+'100.0'+'","locysize":"'+'94.5'+'","rotation":"'+'-13.3'+'","plimg":"'+'https://ik.imagekit.io/ctmfcct2/riley2_0Q_8Aqlx9.png?updatedAt=1683099436377'+'"}]}';
+}
+if (globalfieldpos==="6"){
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-32.3'+'","photoypos":"'+'-14.4'+'","photosize":"'+'92.21'+'","locxpos":"'+'-28.2'+'","locypos":"'+'21.7'+'","locxsize":"'+'94.5'+'","namxpos":"'+'-10.9'+'","namypos":"'+'8.2'+'","namxsize":"'+'100.0'+'","namysize":"'+'100.0'+'","locysize":"'+'94.5'+'","rotation":"'+'-13.3'+'","plimg":"'+'https://ik.imagekit.io/ctmfcct2/riley2_0Q_8Aqlx9.png?updatedAt=1683099436377'+'"}]}';
+}
+if (globalfieldpos==="7"){
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-28.8'+'","photoypos":"'+'-1.7'+'","photosize":"'+'92.21'+'","locxpos":"'+'-24.7'+'","locypos":"'+'34.4'+'","locxsize":"'+'94.5'+'","namxpos":"'+'-12.2'+'","namypos":"'+'16.9'+'","namxsize":"'+'85.7'+'","namysize":"'+'85.7'+'","locysize":"'+'94.5'+'","rotation":"'+'-13.3'+'","plimg":"'+'https://ik.imagekit.io/ctmfcct2/riley2_0Q_8Aqlx9.png?updatedAt=1683099436377'+'"}]}';
+}
+if (globalfieldpos==="8"){
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-27.6'+'","photoypos":"'+'21.1'+'","photosize":"'+'92.21'+'","locxpos":"'+'-0.7'+'","locypos":"'+'37.7'+'","locxsize":"'+'94.5'+'","namxpos":"'+'-11.4'+'","namypos":"'+'63.6'+'","namxsize":"'+'91.8'+'","namysize":"'+'91.8'+'","locysize":"'+'94.5'+'","rotation":"'+'-91.5'+'","plimg":"'+'https://ik.imagekit.io/ctmfcct2/riley2_0Q_8Aqlx9.png?updatedAt=1683099436377'+'"}]}';
+}
+if (globalfieldpos==="9"){
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-14.6'+'","photoypos":"'+'20.1'+'","photosize":"'+'92.21'+'","locxpos":"'+'-0.4'+'","locypos":"'+'55.0'+'","locxsize":"'+'94.5'+'","namxpos":"'+'-10.4'+'","namypos":"'+'41.2'+'","namxsize":"'+'96.4'+'","namysize":"'+'96.4'+'","locysize":"'+'94.5'+'","rotation":"'+'-43.0'+'","plimg":"'+'https://ik.imagekit.io/ctmfcct2/riley2_0Q_8Aqlx9.png?updatedAt=1683099436377'+'"}]}';
+}
+if (globalfieldpos==="10"){
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'8.9'+'","photoypos":"'+'20.1'+'","photosize":"'+'92.21'+'","locxpos":"'+'-0.7'+'","locypos":"'+'7.8'+'","locxsize":"'+'94.5'+'","namxpos":"'+'19.2'+'","namypos":"'+'64.2'+'","namxsize":"'+'96.4'+'","namysize":"'+'96.4'+'","locysize":"'+'94.5'+'","rotation":"'+'86.0","plimg":"'+'https://ik.imagekit.io/ctmfcct2/riley2_0Q_8Aqlx9.png?updatedAt=1683099436377'+'"}]}';
+}
+if (globalfieldpos==="11"){
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'14.6'+'","photoypos":"'+'-2.1'+'","photosize":"'+'92.21'+'","locxpos":"'+'5.4'+'","locypos":"'+'14.3'+'","locxsize":"'+'94.5'+'","namxpos":"'+'19.6'+'","namypos":"'+'19.1'+'","namxsize":"'+'93.6'+'","namysize":"'+'93.6'+'","locysize":"'+'94.5'+'","rotation":"'+'38.1'+'","plimg":"'+'https://ik.imagekit.io/ctmfcct2/riley2_0Q_8Aqlx9.png?updatedAt=1683099436377'+'"}]}';
+}
+if (globalfieldpos==="12"){
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'14.6'+'","photoypos":"'+'-20.3'+'","photosize":"'+'92.21'+'","locxpos":"'+'9.7'+'","locypos":"'+'6.9'+'","locxsize":"'+'94.5'+'","namxpos":"'+'19.5'+'","namypos":"'+'1.5'+'","namxsize":"'+'94.9'+'","namysize":"'+'94.9'+'","locysize":"'+'94.5'+'","rotation":"'+'16.9'+'","plimg":"'+'https://ik.imagekit.io/ctmfcct2/riley2_0Q_8Aqlx9.png?updatedAt=1683099436377'+'"}]}';
+}
+if (globalfieldpos==="13"){
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'12.9'+'","photoypos":"'+'-34.5'+'","photosize":"'+'92.21'+'","locxpos":"'+'7.8'+'","locypos":"'+'-7.7'+'","locxsize":"'+'94.5'+'","namxpos":"'+'12.6'+'","namypos":"'+'-2.8'+'","namxsize":"'+'94.9'+'","namysize":"'+'94.9'+'","locysize":"'+'94.5'+'","rotation":"'+'16.9'+'","plimg":"'+'https://ik.imagekit.io/ctmfcct2/riley2_0Q_8Aqlx9.png?updatedAt=1683099436377'+'"}]}';
+}
+if (globalfieldpos==="14"){
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-0.6'+'","photoypos":"'+'-41.2'+'","photosize":"'+'88.51'+'","locxpos":"'+'17.2'+'","locypos":"'+'-8.8'+'","locxsize":"'+'94.5'+'","namxpos":"'+'-1.7'+'","namypos":"'+'-7.9'+'","namxsize":"'+'100.1'+'","namysize":"'+'100.1'+'","locysize":"'+'94.5'+'","rotation":"'+'-54.8'+'","plimg":"'+'https://ik.imagekit.io/ctmfcct2/riley2_0Q_8Aqlx9.png?updatedAt=1683099436377'+'"}]}';
+}
+if (globalfieldpos==="15"){
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-9.4'+'","photoypos":"'+'-41.5'+'","photosize":"'+'88.51'+'","locxpos":"'+'16.0'+'","locypos":"'+'-21.8'+'","locxsize":"'+'94.5'+'","namxpos":"'+'-9.9'+'","namypos":"'+'-9.2'+'","namxsize":"'+'96.8'+'","namysize":"'+'96.8'+'","locysize":"'+'94.5'+'","rotation":"'+'-84.9'+'","plimg":"'+'https://ik.imagekit.io/ctmfcct2/riley2_0Q_8Aqlx9.png?updatedAt=1683099436377'+'"}]}';
+}
+if (globalfieldpos==="16"){
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-3.0'+'","photoypos":"'+'-41.2'+'","photosize":"'+'81.1'+'","locxpos":"'+'-11.1'+'","locypos":"'+'-59.4'+'","locxsize":"'+'90.4'+'","namxpos":"'+'21.2'+'","namypos":"'+'-11.9'+'","namxsize":"'+'88.1'+'","namysize":"'+'88.1'+'","locysize":"'+'90.4'+'","rotation":"'+'97.1'+'","plimg":"'+'https://ik.imagekit.io/ctmfcct2/riley2_0Q_8Aqlx9.png?updatedAt=1683099436377'+'"}]}';
+}
+if (globalfieldpos==="17"){
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-12.2'+'","photoypos":"'+'-42.6'+'","photosize":"'+'80.8'+'","locxpos":"'+'-12.4'+'","locypos":"'+'-13.8'+'","locxsize":"'+'82.0'+'","namxpos":"'+'12.5'+'","namypos":"'+'-9.6'+'","namxsize":"'+'92.9'+'","namysize":"'+'92.9'+'","locysize":"'+'82.0'+'","rotation":"'+'0'+'","plimg":"'+'https://ik.imagekit.io/ctmfcct2/riley2_0Q_8Aqlx9.png?updatedAt=1683099436377'+'"}]}';
+}
+if (globalfieldpos==="18"){
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-17.3'+'","photoypos":"'+'-41.1'+'","photosize":"'+'95.91'+'","locxpos":"'+'-17.6'+'","locypos":"'+'-6.6'+'","locxsize":"'+'99.7'+'","namxpos":"'+'11.4'+'","namypos":"'+'-6.5'+'","namxsize":"'+'103.5'+'","namysize":"'+'103.5'+'","locysize":"'+'99.7'+'","rotation":"'+'0'+'","plimg":"'+'https://ik.imagekit.io/ctmfcct2/riley2_0Q_8Aqlx9.png?updatedAt=1683099436377'+'"}]}';
+}
+if (globalfieldpos==="19"){
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-21.3'+'","photoypos":"'+'-38.5'+'","photosize":"'+'122.57'+'","locxpos":"'+'-20.9'+'","locypos":"'+'3.2'+'","locxsize":"'+'116.9'+'","namxpos":"'+'10.3'+'","namypos":"'+'-2.7'+'","namxsize":"'+'103.5'+'","namysize":"'+'103.5'+'","locysize":"'+'116.9'+'","rotation":"'+'0'+'","plimg":"'+'https://ik.imagekit.io/ctmfcct2/riley2_0Q_8Aqlx9.png?updatedAt=1683099436377'+'"}]}';
+}
+if (globalfieldpos==="20"){
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-20.5'+'","photoypos":"'+'-21.5'+'","photosize":"'+'104.06'+'","locxpos":"'+'-21.0'+'","locypos":"'+'16.3'+'","locxsize":"'+'109.1'+'","namxpos":"'+'-5.3'+'","namypos":"'+'1.1'+'","namxsize":"'+'103.5'+'","namysize":"'+'103.5'+'","locysize":"'+'109.1'+'","rotation":"'+'0'+'","plimg":"'+'https://ik.imagekit.io/ctmfcct2/riley2_0Q_8Aqlx9.png?updatedAt=1683099436377'+'"}]}';
+}
+if (globalfieldpos==="21"){
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-8.3'+'","photoypos":"'+'-1.6'+'","photosize":"'+'92.21'+'","locxpos":"'+'-19.6'+'","locypos":"'+'-1.6'+'","locxsize":"'+'94.9'+'","namxpos":"'+'18.5'+'","namypos":"'+'30.5'+'","namxsize":"'+'94.3'+'","namysize":"'+'94.3'+'","locysize":"'+'94.9'+'","rotation":"'+'65.8'+'","plimg":"'+'https://ik.imagekit.io/ctmfcct2/riley2_0Q_8Aqlx9.png?updatedAt=1683099436377'+'"}]}';
+}
+if (globalfieldpos==="22"){
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-4.6'+'","photoypos":"'+'-1.4'+'","photosize":"'+'89.99'+'","locxpos":"'+'-16.0'+'","locypos":"'+'2.5'+'","locxsize":"'+'94.9'+'","namxpos":"'+'19.3'+'","namypos":"'+'20.0'+'","namxsize":"'+'94.3'+'","namysize":"'+'94.3'+'","locysize":"'+'94.9'+'","rotation":"'+'59.1'+'","plimg":"'+'https://ik.imagekit.io/ctmfcct2/riley2_0Q_8Aqlx9.png?updatedAt=1683099436377'+'"}]}';
+}
+if (globalfieldpos==="23"){
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-14.8'+'","photoypos":"'+'-21.0'+'","photosize":"'+'92.95'+'","locxpos":"'+'1'+'","locypos":"'+'14.6'+'","locxsize":"'+'96.9'+'","namxpos":"'+'-10.1'+'","namypos":"'+'1'+'","namxsize":"'+'96.8'+'","namysize":"'+'96.8'+'","locysize":"'+'96.9'+'","rotation":"'+'-47.0'+'","plimg":"'+'https://ik.imagekit.io/ctmfcct2/riley2_0Q_8Aqlx9.png?updatedAt=1683099436377'+'"}]}';
+}
+if (globalfieldpos==="24"){
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-10.5'+'","photoypos":"'+'-1.5'+'","photosize":"'+'95.91'+'","locxpos":"'+'11.9'+'","locypos":"'+'27.1'+'","locxsize":"'+'94.9'+'","namxpos":"'+'-10.4'+'","namypos":"'+'30.5'+'","namxsize":"'+'94.3'+'","namysize":"'+'94.3'+'","locysize":"'+'94.9'+'","rotation":"'+'-68.5'+'","plimg":"'+'https://ik.imagekit.io/ctmfcct2/riley2_0Q_8Aqlx9.png?updatedAt=1683099436377'+'"}]}';
+}
+if (globalfieldpos==="25"){
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'0.6'+'","photoypos":"'+'-17.8'+'","photosize":"'+'88.51'+'","locxpos":"'+'2.7'+'","locypos":"'+'17.0'+'","locxsize":"'+'94.9'+'","namxpos":"'+'19.3'+'","namypos":"'+'2.9'+'","namxsize":"'+'94.3'+'","namysize":"'+'94.3'+'","locysize":"'+'94.9'+'","rotation":"'+'-8.4'+'","plimg":"'+'https://ik.imagekit.io/ctmfcct2/riley2_0Q_8Aqlx9.png?updatedAt=1683099436377'+'"}]}';
+}
+if (globalfieldpos==="26"){
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-0.7'+'","photoypos":"'+'-35.9'+'","photosize":"'+'100.0'+'","locxpos":"'+'-0.7'+'","locypos":"'+'-1.1'+'","locxsize":"'+'98.9'+'","namxpos":"'+'-0.3'+'","namypos":"'+'-2.7'+'","namxsize":"'+'96.7'+'","namysize":"'+'96.7'+'","locysize":"'+'98.9'+'","rotation":"'+'0'+'","plimg":"'+'https://ik.imagekit.io/ctmfcct2/riley2_0Q_8Aqlx9.png?updatedAt=1683099436377'+'"}]}';
+}
+if (globalfieldpos==="27"){
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-1.4'+'","photoypos":"'+'-40.7'+'","photosize":"'+'92.95'+'","locxpos":"'+'-1.8'+'","locypos":"'+'-7.1'+'","locxsize":"'+'96.9'+'","namxpos":"'+'-1.7'+'","namypos":"'+'-8.2'+'","namxsize":"'+'96.8'+'","namysize":"'+'96.8'+'","locysize":"'+'96.9'+'","rotation":"'+'0'+'","plimg":"'+'https://ik.imagekit.io/ctmfcct2/riley2_0Q_8Aqlx9.png?updatedAt=1683099436377'+'"}]}';
+}
+if (globalfieldpos==="28"){
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-9.1'+'","photoypos":"'+'-40.7'+'","photosize":"'+'92.95'+'","locxpos":"'+'6.8'+'","locypos":"'+'-5.6'+'","locxsize":"'+'96.9'+'","namxpos":"'+'-9.4'+'","namypos":"'+'-8.2'+'","namxsize":"'+'96.8'+'","namysize":"'+'96.8'+'","locysize":"'+'96.9'+'","rotation":"'+'-47.0'+'","plimg":"'+'https://ik.imagekit.io/ctmfcct2/riley2_0Q_8Aqlx9.png?updatedAt=1683099436377'+'"}]}';
+}
+if (globalfieldpos==="29"){
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'9.8'+'","photoypos":"'+'0.0'+'","photosize":"'+'92.95'+'","locxpos":"'+'8.9'+'","locypos":"'+'34.2'+'","locxsize":"'+'100.0'+'","namxpos":"'+'21.2'+'","namypos":"'+'19.8'+'","namxsize":"'+'94.0'+'","namysize":"'+'94.0'+'","locysize":"'+'100.0'+'","rotation":"'+'0'+'","plimg":"'+'https://ik.imagekit.io/ctmfcct2/riley2_0Q_8Aqlx9.png?updatedAt=1683099436377'+'"}]}';
+}
+if (globalfieldpos==="40"){
+document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+globalfielder+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'","photoxpos":"'+'-18.5'+'","photoypos":"'+'31.2'+'","photosize":"'+'61.85'+'","locxpos":"'+'-18.5'+'","locypos":"'+'53.3'+'","locxsize":"'+'62.8'+'","namxpos":"'+'3.0'+'","namypos":"'+'62.7'+'","namxsize":"'+'86.6'+'","namysize":"'+'86.6'+'","locysize":"'+'62.8'+'","rotation":"'+'0'+'","plimg":"'+'https://ik.imagekit.io/ctmfcct2/riley2_0Q_8Aqlx9.png?updatedAt=1683099436377'+'"}]}';
+}
+}
+
 var clearf = document.getElementById('clearfielder');
 clearf.addEventListener('click', fielderclear);
 function fielderclear (event){
 document.getElementById('FIELDER').innerHTML ="";
+var globalfielder="";
+var fielderimg="";
+var globalfieldpos="40";
 }
 
 var fielder1but = document.getElementById('fielder1');
 fielder1but.addEventListener('click', setfielder1);
 function setfielder1 (event){
 let fielder1=document.getElementById('fielder1').innerHTML;
-let f1=fielder1.replace(" ","\\n")
-document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+f1+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'"}]}';
+let f1=fielder1.replace(" ","\\n");
+globalfielder=f1;
+sendfielderdata();
 }
 
 var fielder2but = document.getElementById('fielder2');
@@ -162,84 +271,96 @@ fielder2but.addEventListener('click', setfielder2);
 function setfielder2 (event){
 let fielder2=document.getElementById('fielder2').innerHTML;
 let f2=fielder2.replace(" ","\\n")
-document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+f2+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'"}]}';
+globalfielder=f2;
+sendfielderdata();
 }
 var fielder3but = document.getElementById('fielder3');
 fielder3but.addEventListener('click', setfielder3);
 function setfielder3 (event){
 let fielder3=document.getElementById('fielder3').innerHTML;
 let f3=fielder3.replace(" ","\\n")
-document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+f3+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'"}]}';
+globalfielder=f3;
+sendfielderdata();
 }
 var fielder4but = document.getElementById('fielder4');
 fielder4but.addEventListener('click', setfielder4);
 function setfielder4 (event){
 let fielder4=document.getElementById('fielder4').innerHTML;
 let f4=fielder4.replace(" ","\\n")
-document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+f4+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'"}]}';
+globalfielder=f4;
+sendfielderdata();
 }
 var fielder5but = document.getElementById('fielder5');
 fielder5but.addEventListener('click', setfielder5);
 function setfielder5 (event){
 let fielder5=document.getElementById('fielder5').innerHTML;
 let f5=fielder5.replace(" ","\\n")
-document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+f5+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'"}]}';
+globalfielder=f5;
+sendfielderdata();
 }
 var fielder6but = document.getElementById('fielder6');
 fielder6but.addEventListener('click', setfielder6);
 function setfielder6 (event){
 let fielder6=document.getElementById('fielder6').innerHTML;
 let f6=fielder6.replace(" ","\\n")
-document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+f6+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'"}]}';
+globalfielder=f6;
+sendfielderdata();
 }
 var fielder7but = document.getElementById('fielder7');
 fielder7but.addEventListener('click', setfielder7);
 function setfielder7 (event){
 let fielder7=document.getElementById('fielder7').innerHTML;
 let f7=fielder7.replace(" ","\\n")
-document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+f7+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'"}]}';
+globalfielder=f7;
+sendfielderdata();
 }
 var fielder8but = document.getElementById('fielder8');
 fielder8but.addEventListener('click', setfielder8);
 function setfielder8 (event){
 let fielder8=document.getElementById('fielder8').innerHTML;
 let f8=fielder8.replace(" ","\\n")
-document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+f8+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'"}]}';
+globalfielder=f8;
+sendfielderdata();
 }
 var fielder9but = document.getElementById('fielder9');
 fielder9but.addEventListener('click', setfielder9);
 function setfielder9 (event){
 let fielder9=document.getElementById('fielder9').innerHTML;
 let f9=fielder9.replace(" ","\\n")
-document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+f9+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'"}]}';
+globalfielder=f9;
+sendfielderdata();
 }
 var fielder10but = document.getElementById('fielder10');
 fielder10but.addEventListener('click', setfielder10);
 function setfielder10 (event){
 let fielder10=document.getElementById('fielder10').innerHTML;
 let f10=fielder10.replace(" ","\\n")
-document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+f10+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'"}]}';
+globalfielder=f10;
+sendfielderdata();
 }
 var fielder11but = document.getElementById('fielder11');
 fielder11but.addEventListener('click', setfielder11);
 function setfielder11 (event){
 let fielder11=document.getElementById('fielder11').innerHTML;
 let f11=fielder11.replace(" ","\\n")
-document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+f11+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'"}]}';
+globalfielder=f11;
+sendfielderdata();
 }
 var fielder12but = document.getElementById('fielder12');
 fielder12but.addEventListener('click', setfielder12);
 function setfielder12 (event){
 let fielder12=document.getElementById('fielder12').innerHTML;
 let f12=fielder12.replace(" ","\\n")
-document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+f12+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'"}]}';
+globalfielder=f12;
+sendfielderdata();
 }
 var fielder13but = document.getElementById('fielder13');
 fielder13but.addEventListener('click', setfielder13);
 function setfielder13 (event){
 let fielder13=document.getElementById('fielder13').innerHTML;
 let f13=fielder13.replace(" ","\\n")
-document.getElementById('FIELDER').innerHTML = '{"content": [{"FIELDER":"'+f13+'","BGCOL":"'+bgccol+'","FONTCOL":"'+fontcol+'"}]}';
+globalfielder=f13;
+sendfielderdata();
 }
 
 /*FIELDERS*/
@@ -263,7 +384,12 @@ document.getElementById('indicator').style.backgroundColor="#3fd300";
 	function timedCount() {
   countdown++;
   timeout = setTimeout(timedCount, 1000);
-  if (countdown===11){stopCount();document.getElementById('data').innerHTML ="";document.getElementById('FIELDER').innerHTML ="";}
+  if (countdown===11)
+  {stopCount();document.getElementById('data').innerHTML ="";
+  document.getElementById('FIELDER').innerHTML ="";
+  var globalfielder="";
+var fielderimg="";
+var globalfieldpos="40";}
 }
   }
 }
@@ -277,7 +403,13 @@ document.getElementById('indicator').style.backgroundColor="#3fd300";
   countdown++;
     console.log("countdown: "+countdown);
   timeout = setTimeout(timedCount, 1000);
-  if (countdown===12){stopCount();document.getElementById('data').innerHTML ="";document.getElementById('FIELDER').innerHTML ="";}
+  if (countdown===12)
+  {stopCount();document.getElementById('data').innerHTML ="";
+  document.getElementById('FIELDER').innerHTML ="";
+  var globalfielder="";
+var fielderimg="";
+var globalfieldpos="40";
+  }
 }
   }
 }
@@ -308,6 +440,7 @@ function rwk (event){
 document.getElementById('data').innerHTML ='{"content": [{"LNK":"https://res.cloudinary.com/dapg5ktt4/video/upload/v1661328513/wagon%20wheel/TO_WICKET_KEEPER_hoaijp.webm","HAND":"RIGHT\\nHAND","FP":"WICKET\\nKEEPER","XPOS":"-0.4","YPOS":"15.9","FSIZ":"19","flip":"0","noflip":"100"}]}';
 stopCount();
 startCount();
+globalfieldpos="1";
 }
 var rhbftm = document.getElementById('finethirdman');
 rhbftm.addEventListener('click', rftm);
@@ -315,7 +448,7 @@ function rftm (event){
 document.getElementById('data').innerHTML ='{"content": [{"LNK":"https://res.cloudinary.com/dapg5ktt4/video/upload/v1661327976/wagon%20wheel/FINE_THIRD_MAN_a2qouq.webm","HAND":"RIGHT\\nHAND","FP":"FINE\\nTHIRD MAN","XPOS":"-0.4","YPOS":"15.6","FSIZ":"16","flip":"0","noflip":"100"}]}';
 stopCount();
 startCount();
- 
+ globalfieldpos="2";
 }
 var rhbtm = document.getElementById('thirdman');
 rhbtm.addEventListener('click', rtm);
@@ -323,6 +456,7 @@ function rtm (event){
 document.getElementById('data').innerHTML ='{"content": [{"LNK":"https://res.cloudinary.com/dapg5ktt4/video/upload/v1661327976/wagon%20wheel/THIRD_MAN_ypgssg.webm","HAND":"RIGHT\\nHAND","FP":"DEEP\\nTHIRD MAN","XPOS":"-0.4","YPOS":"15.6","FSIZ":"16","flip":"0","noflip":"100"}]}';
 stopCount();
 startCount();
+globalfieldpos="3";
 }
 var rhbdpoint = document.getElementById('deeppoint');
 rhbdpoint.addEventListener('click', rdpoint);
@@ -330,6 +464,7 @@ function rdpoint (event){
 document.getElementById('data').innerHTML ='{"content": [{"LNK":"https://res.cloudinary.com/dapg5ktt4/video/upload/v1661327976/wagon%20wheel/DEEP_POINT_c6ec7o.webm","HAND":"RIGHT\\nHAND","FP":"DEEP\\nPOINT","XPOS":"-0.4","YPOS":"16.6","FSIZ":"18.8","flip":"0","noflip":"100"}]}';
 stopCount();
 startCount();
+globalfieldpos="4";
  }
 var rhbcovp = document.getElementById('coverpoint');
 rhbcovp.addEventListener('click', rcovp);
@@ -337,6 +472,7 @@ function rcovp (event){
 document.getElementById('data').innerHTML ='{"content": [{"LNK":"https://res.cloudinary.com/dapg5ktt4/video/upload/v1661327977/wagon%20wheel/COVER_POINT_xctgaq.webm","HAND":"RIGHT\\nHAND","FP":"DEEP\\nCOVER POINT","XPOS":"-0.4","YPOS":"15","FSIZ":"16.6","flip":"0","noflip":"100"}]}';
 stopCount();
 startCount();
+globalfieldpos="5";
  }
 var rhbdcov = document.getElementById('covers');
 rhbdcov.addEventListener('click', rdcov);
@@ -344,6 +480,7 @@ function rdcov (event){
 document.getElementById('data').innerHTML ='{"content": [{"LNK":"https://res.cloudinary.com/dapg5ktt4/video/upload/v1661327976/wagon%20wheel/DEEP_COVERS_bbfl06.webm","HAND":"RIGHT\\nHAND","FP":"DEEP\\nCOVERS","XPOS":"-0.4","YPOS":"15.9","FSIZ":"17.4","flip":"0","noflip":"100"}]}';
 stopCount();
 startCount();
+globalfieldpos="6";
  }
 var rhbexcov = document.getElementById('extracover');
 rhbexcov.addEventListener('click', rexcov);
@@ -351,6 +488,7 @@ function rexcov (event){
 document.getElementById('data').innerHTML ='{"content": [{"LNK":"https://res.cloudinary.com/dapg5ktt4/video/upload/v1661327976/wagon%20wheel/ETRA_COVER_jpzaju.webm","HAND":"RIGHT\\nHAND","FP":"DEEP\\nEXTRA COVER","XPOS":"-0.4","YPOS":"15.6","FSIZ":"15.2","flip":"0","noflip":"100"}]}';
 stopCount();
 startCount();
+globalfieldpos="7";
  }
 var rhbloff = document.getElementById('longoff');
 rhbloff.addEventListener('click', rloff);
@@ -358,6 +496,7 @@ function rloff (event){
 document.getElementById('data').innerHTML ='{"content": [{"LNK":"https://res.cloudinary.com/dapg5ktt4/video/upload/v1661327976/wagon%20wheel/LONG_OFF_jwfcxi.webm","HAND":"RIGHT\\nHAND","FP":"LONG\\nOFF","XPOS":"-0.4","YPOS":"17.1","FSIZ":"19.1","flip":"0","noflip":"100"}]}';
 stopCount();
 startCount();
+globalfieldpos="8";
  }
 var rhbshit = document.getElementById('straighthit');
 rhbshit.addEventListener('click', rshit);
@@ -365,6 +504,7 @@ function rshit (event){
 document.getElementById('data').innerHTML ='{"content": [{"LNK":"https://res.cloudinary.com/dapg5ktt4/video/upload/v1661327951/wagon%20wheel/STRAIGHT_HIT_o7muo3.webm","HAND":"RIGHT\\nHAND","FP":"STRAIGHT\\nHIT","XPOS":"-0.4","YPOS":"-31.5","FSIZ":"12.7","flip":"0","noflip":"100"}]}';
 stopCount();
 startCount();
+globalfieldpos="9";
  }
 var rhblon = document.getElementById('longon');
 rhblon.addEventListener('click', rlon);
@@ -372,6 +512,7 @@ function rlon (event){
 document.getElementById('data').innerHTML ='{"content": [{"LNK":"https://res.cloudinary.com/dapg5ktt4/video/upload/v1661327907/wagon%20wheel/LONG_ON_pksfv9.webm","HAND":"RIGHT\\nHAND","FP":"LONG\\nON","XPOS":"-1.5","YPOS":"17.3","FSIZ":"19.7","flip":"0","noflip":"100"}]}';
 stopCount();
 startCount();
+globalfieldpos="10";
  }
 var rhbdmidw = document.getElementById('midwicket');
 rhbdmidw.addEventListener('click', rdmidw);
@@ -379,6 +520,7 @@ function rdmidw (event){
 document.getElementById('data').innerHTML ='{"content": [{"LNK":"https://res.cloudinary.com/dapg5ktt4/video/upload/v1661327907/wagon%20wheel/DEEP_MID_WICKET_yr6xya.webm","HAND":"RIGHT\\nHAND","FP":"DEEP\\nMID WICKET","XPOS":"-0.4","YPOS":"15.6","FSIZ":"16.5","flip":"0","noflip":"100"}]}';
 stopCount();
 startCount();
+globalfieldpos="11";
  }
 var rhbsweeper = document.getElementById('sweeper');
 rhbsweeper.addEventListener('click', rsweeper);
@@ -386,6 +528,7 @@ function rsweeper (event){
 document.getElementById('data').innerHTML ='{"content": [{"LNK":"https://res.cloudinary.com/dapg5ktt4/video/upload/v1661327907/wagon%20wheel/SWEEPER_wh8q0s.webm","HAND":"RIGHT\\nHAND","FP":"SWEEPER","XPOS":"-0.4","YPOS":"15.6","FSIZ":"10.9","flip":"0","noflip":"100"}]}';
 stopCount();
 startCount();
+globalfieldpos="12";
  }
 var rhbdsql = document.getElementById('squareleg');
 rhbdsql.addEventListener('click', rdsql);
@@ -393,6 +536,7 @@ function rdsql (event){
 document.getElementById('data').innerHTML ='{"content": [{"LNK":"https://res.cloudinary.com/dapg5ktt4/video/upload/v1661327907/wagon%20wheel/DEEP_SQUARE_LEG_uyxdkf.webm","HAND":"RIGHT\\nHAND","FP":"DEEP\\nSQUARE LEG","XPOS":"-0.4","YPOS":"15.6","FSIZ":"15.8","flip":"0","noflip":"100"}]}';
 stopCount();
 startCount();
+globalfieldpos="13";
  }
 var rhbdfinel = document.getElementById('deepfineleg');
 rhbdfinel.addEventListener('click', rdfinel);
@@ -400,6 +544,7 @@ function rdfinel (event){
 document.getElementById('data').innerHTML ='{"content": [{"LNK":"https://res.cloudinary.com/dapg5ktt4/video/upload/v1661327907/wagon%20wheel/DEEP_FINE_LEG_qymxzk.webm","HAND":"RIGHT\\nHAND","FP":"DEEP\\nFINE LEG","XPOS":"-0.4","YPOS":"15.6","FSIZ":"17.1","flip":"0","noflip":"100"}]}';
 stopCount();
 startCount();
+globalfieldpos="14";
  }
 var rhbdveryfine = document.getElementById('veryfineleg');
 rhbdveryfine.addEventListener('click', rdveryfine);
@@ -407,6 +552,7 @@ function rdveryfine (event){
 document.getElementById('data').innerHTML ='{"content": [{"LNK":"https://res.cloudinary.com/dapg5ktt4/video/upload/v1661327907/wagon%20wheel/VERY_FINE_LEG_xqxuwf.webm","HAND":"RIGHT\\nHAND","FP":"DEEP\\nFINE LEG","XPOS":"-0.4","YPOS":"15.6","FSIZ":"17.1","flip":"0","noflip":"100"}]}';
 stopCount();
 startCount();
+globalfieldpos="15";
  }
 var rhbbstra = document.getElementById('behindstraight');
 rhbbstra.addEventListener('click', rbstra);
@@ -414,6 +560,7 @@ function rbstra (event){
 document.getElementById('data').innerHTML ='{"content": [{"LNK":"https://res.cloudinary.com/dapg5ktt4/video/upload/v1661328076/wagon%20wheel/BEHIND_WICKET_KEEPER_gih5te.webm","HAND":"RIGHT\\nHAND","FP":"BEHIND\\nSTRAIGHT","XPOS":"-0.4","YPOS":"15.6","FSIZ":"16","flip":"0","noflip":"100"}]}';
 stopCount();
 startCount();
+globalfieldpos="16";
  }
 var rhbstt = document.getElementById('shortthirdman');
 rhbstt.addEventListener('click', rstt);
@@ -421,6 +568,7 @@ function rstt (event){
 document.getElementById('data').innerHTML ='{"content": [{"LNK":"https://res.cloudinary.com/dapg5ktt4/video/upload/v1661328488/wagon%20wheel/SHORT_THIRD_MAN_egzxyy.webm","HAND":"RIGHT\\nHAND","FP":"SHORT\\nTHIRD MAN","XPOS":"-1","YPOS":"16","FSIZ":"15.9","flip":"0","noflip":"100"}]}';
 stopCount();
 startCount();
+globalfieldpos="17";
  }
 var rhbbP = document.getElementById('backwardpoint');
 rhbbP.addEventListener('click', rbP);
@@ -428,6 +576,7 @@ function rbP (event){
 document.getElementById('data').innerHTML ='{"content": [{"LNK":"https://res.cloudinary.com/dapg5ktt4/video/upload/v1661328488/wagon%20wheel/BACKWARD_POINT_q6l3po.webm","HAND":"RIGHT\\nHAND","FP":"BACKWARD\\nPOINT","XPOS":"-1","YPOS":"16.4","FSIZ":"17.1","flip":"0","noflip":"100"}]}';
 stopCount();
 startCount();
+globalfieldpos="18";
  }
 var rhbpoi = document.getElementById('point');
 rhbpoi.addEventListener('click', rpoi);
@@ -435,6 +584,7 @@ function rpoi (event){
 document.getElementById('data').innerHTML ='{"content": [{"LNK":"https://res.cloudinary.com/dapg5ktt4/video/upload/v1661328488/wagon%20wheel/POINT_mj0urw.webm","HAND":"RIGHT\\nHAND","FP":"POINT","XPOS":"-1","YPOS":"15.5","FSIZ":"14.8","flip":"0","noflip":"100"}]}';
 stopCount();
 startCount();
+globalfieldpos="19";
  }
 var rhbscov = document.getElementById('shortcover');
 rhbscov.addEventListener('click', rscov);
@@ -442,6 +592,7 @@ function rscov (event){
 document.getElementById('data').innerHTML ='{"content": [{"LNK":"https://res.cloudinary.com/dapg5ktt4/video/upload/v1661328488/wagon%20wheel/SHORT_COVER_F_sekhjb.webm","HAND":"RIGHT\\nHAND","FP":"SHORT\\nCOVER","XPOS":"-1","YPOS":"16","FSIZ":"17.1","flip":"0","noflip":"100"}]}';
 stopCount();
 startCount();
+globalfieldpos="20";
  }
 var rhbmidoff = document.getElementById('midoff');
 rhbmidoff.addEventListener('click', rmidoff);
@@ -449,6 +600,7 @@ function rmidoff (event){
 document.getElementById('data').innerHTML ='{"content": [{"LNK":"https://res.cloudinary.com/dapg5ktt4/video/upload/v1661328489/wagon%20wheel/MID_OFF_zejwra.webm","HAND":"RIGHT\\nHAND","FP":"MID OFF","XPOS":"-0.7","YPOS":"15.5","FSIZ":"13.5","flip":"0","noflip":"100"}]}';
 stopCount();
 startCount();
+globalfieldpos="21";
  }
 var rhbshorts = document.getElementById('shortstraight');
 rhbshorts.addEventListener('click', rshorts);
@@ -456,6 +608,7 @@ function rshorts (event){
 document.getElementById('data').innerHTML ='{"content": [{"LNK":"https://res.cloudinary.com/dapg5ktt4/video/upload/v1661328513/wagon%20wheel/SHORT_STRAIGHT_lgoo6h.webm","HAND":"RIGHT\\nHAND","FP":"\\nSTRAIGHT","XPOS":"-1","YPOS":"12.8","FSIZ":"19.5","flip":"0","noflip":"100"}]}';
 stopCount();
 startCount();
+globalfieldpos="22";
  }
 var rhbbtb = document.getElementById('backtobowler');
 rhbbtb.addEventListener('click', rbtb);
@@ -463,6 +616,7 @@ function rbtb (event){
 document.getElementById('data').innerHTML ='{"content": [{"LNK":"https://res.cloudinary.com/dapg5ktt4/video/upload/v1661329656/wagon%20wheel/BACK_TO_BOWLER_zzwtd0.webm","HAND":"RIGHT\\nHAND","FP":"BACK TO\\nBOWLER","XPOS":"-1","YPOS":"15.5","FSIZ":"18.8","flip":"0","noflip":"100"}]}';
 stopCount();
 startCount();
+globalfieldpos="23";
  }
 var rhbmidon = document.getElementById('midon');
 rhbmidon.addEventListener('click', rmidon);
@@ -470,6 +624,7 @@ function rmidon (event){
 document.getElementById('data').innerHTML ='{"content": [{"LNK":"https://res.cloudinary.com/dapg5ktt4/video/upload/v1661328506/wagon%20wheel/MID_ON_eqqfzs.webm","HAND":"RIGHT\\nHAND","FP":"MID ON","XPOS":"-0.7","YPOS":"15.5","FSIZ":"13.5","flip":"0","noflip":"100"}]}';
 stopCount();
 startCount();
+globalfieldpos="24";
  }
 var rhbsmidw = document.getElementById('shortmidwicket');
 rhbsmidw.addEventListener('click', rsmidw);
@@ -477,6 +632,7 @@ function rsmidw (event){
 document.getElementById('data').innerHTML ='{"content": [{"LNK":"https://res.cloudinary.com/dapg5ktt4/video/upload/v1661328506/wagon%20wheel/SHORT_MIDWICKET_dnabhu.webm","HAND":"RIGHT\\nHAND","FP":"SHORT\\nMID-WICKET","XPOS":"-0.6","YPOS":"15.5","FSIZ":"14.7","flip":"0","noflip":"100"}]}';
 stopCount();
 startCount();
+globalfieldpos="25";
  }
 var rhbssql = document.getElementById('shortsquareleg');
 rhbssql.addEventListener('click', rssql);
@@ -484,6 +640,7 @@ function rssql (event){
 document.getElementById('data').innerHTML ='{"content": [{"LNK":"https://res.cloudinary.com/dapg5ktt4/video/upload/v1661328506/wagon%20wheel/SHORT_SQUARE_LEG_bupfgm.webm","HAND":"RIGHT\\nHAND","FP":"SHORT\\nSQUARE-LEG","XPOS":"-0.8","YPOS":"15.5","FSIZ":"15.4","flip":"0","noflip":"100"}]}';
 stopCount();
 startCount();
+globalfieldpos="26";
  }
 var rhbbwsql = document.getElementById('backwardsquareleg');
 rhbbwsql.addEventListener('click', rbwsql);
@@ -491,6 +648,7 @@ function rbwsql (event){
 document.getElementById('data').innerHTML ='{"content": [{"LNK":"https://res.cloudinary.com/dapg5ktt4/video/upload/v1661328506/wagon%20wheel/BACKWARD_SQAURE_LEG_dmpsd9.webm","HAND":"RIGHT\\nHAND","FP":"BACKWARD\\nSQUARE-LEG","XPOS":"-0.9","YPOS":"16","FSIZ":"15.5","flip":"0","noflip":"100"}]}';
 stopCount();
 startCount();
+globalfieldpos="27";
  }
 var rhbsfnl = document.getElementById('shortfineleg');
 rhbsfnl.addEventListener('click', rsfnl);
@@ -498,6 +656,7 @@ function rsfnl (event){
 document.getElementById('data').innerHTML ='{"content": [{"LNK":"https://res.cloudinary.com/dapg5ktt4/video/upload/v1661328506/wagon%20wheel/SHORT_FINE_LEG_mpozi0.webm","HAND":"RIGHT\\nHAND","FP":"SHORT\\nFINE LEG","XPOS":"-1","YPOS":"16","FSIZ":"16.6","flip":"0","noflip":"100"}]}';
 stopCount();
 sixstartCount();
+globalfieldpos="28";
  }
 var rhbstrsix = document.getElementById('straightsix');
 rhbstrsix.addEventListener('click', rstrsix);
@@ -592,6 +751,7 @@ function lwk (event){
 document.getElementById('data').innerHTML ='{"content": [{"LNK":"https://res.cloudinary.com/dapg5ktt4/video/upload/v1661328513/wagon%20wheel/TO_WICKET_KEEPER_hoaijp.webm","HAND":"LEFT\\nHAND","FP":"WICKET\\nKEEPER","XPOS":"-0.4","YPOS":"15.9","FSIZ":"19","flip":"100","noflip":"0"}]}';
 stopCount();
 startCount();
+globalfieldpos="1";
  }
 var lhbftm = document.getElementById('lhbfinethirdman');
 lhbftm.addEventListener('click', lftm);
@@ -599,6 +759,7 @@ function lftm (event){
 document.getElementById('data').innerHTML ='{"content": [{"LNK":"https://res.cloudinary.com/dapg5ktt4/video/upload/v1661327976/wagon%20wheel/FINE_THIRD_MAN_a2qouq.webm","HAND":"LEFT\\nHAND","FP":"FINE\\nTHIRD MAN","XPOS":"-0.4","YPOS":"15.6","FSIZ":"16","flip":"100","noflip":"0"}]}';
 stopCount();
 startCount();
+globalfieldpos="15";
  }
 var lhbtm = document.getElementById('lhbdeepthirdman');
 lhbtm.addEventListener('click', ltm);
@@ -606,6 +767,7 @@ function ltm (event){
 document.getElementById('data').innerHTML ='{"content": [{"LNK":"https://res.cloudinary.com/dapg5ktt4/video/upload/v1661327976/wagon%20wheel/THIRD_MAN_ypgssg.webm","HAND":"LEFT\\nHAND","FP":"DEEP\\nTHIRD MAN","XPOS":"-0.4","YPOS":"15.6","FSIZ":"16","flip":"100","noflip":"0"}]}';
 stopCount();
 startCount();
+globalfieldpos="14";
  }
 var lhbdpoint = document.getElementById('lhbdeeppoint');
 lhbdpoint.addEventListener('click', ldpoint);
@@ -613,6 +775,7 @@ function ldpoint (event){
 document.getElementById('data').innerHTML ='{"content": [{"LNK":"https://res.cloudinary.com/dapg5ktt4/video/upload/v1661327976/wagon%20wheel/DEEP_POINT_c6ec7o.webm","HAND":"LEFT\\nHAND","FP":"DEEP\\nPOINT","XPOS":"-0.4","YPOS":"16.6","FSIZ":"18.8","flip":"100","noflip":"0"}]}';
 stopCount();
 startCount();
+globalfieldpos="13";
  }
 var lhbcovp = document.getElementById('lhbcoverpoint');
 lhbcovp.addEventListener('click', lcovp);
@@ -620,6 +783,7 @@ function lcovp (event){
 document.getElementById('data').innerHTML ='{"content": [{"LNK":"https://res.cloudinary.com/dapg5ktt4/video/upload/v1661327977/wagon%20wheel/COVER_POINT_xctgaq.webm","HAND":"LEFT\\nHAND","FP":"DEEP\\nCOVER POINT","XPOS":"-0.4","YPOS":"15","FSIZ":"16.6","flip":"100","noflip":"0"}]}';
 stopCount();
 startCount();
+globalfieldpos="12";
  }
 var lhbdcov = document.getElementById('lhbcovers');
 lhbdcov.addEventListener('click', ldcov);
@@ -627,6 +791,7 @@ function ldcov (event){
 document.getElementById('data').innerHTML ='{"content": [{"LNK":"https://res.cloudinary.com/dapg5ktt4/video/upload/v1661327976/wagon%20wheel/DEEP_COVERS_bbfl06.webm","HAND":"LEFT\\nHAND","FP":"DEEP\\nCOVERS","XPOS":"-0.4","YPOS":"15.9","FSIZ":"17.4","flip":"100","noflip":"0"}]}';
 stopCount();
 startCount();
+globalfieldpos="11";
  }
 var lhbexcov = document.getElementById('lhbextracover');
 lhbexcov.addEventListener('click', lexcov);
@@ -634,6 +799,7 @@ function lexcov (event){
 document.getElementById('data').innerHTML ='{"content": [{"LNK":"https://res.cloudinary.com/dapg5ktt4/video/upload/v1661327976/wagon%20wheel/ETRA_COVER_jpzaju.webm","HAND":"LEFT\\nHAND","FP":"DEEP\\nEXTRA COVER","XPOS":"-0.4","YPOS":"15.6","FSIZ":"15.2","flip":"100","noflip":"0"}]}';
 stopCount();
 startCount();
+globalfieldpos="29";
  }
 var lhbloff = document.getElementById('lhblongoff');
 lhbloff.addEventListener('click', lloff);
@@ -641,6 +807,7 @@ function lloff (event){
 document.getElementById('data').innerHTML ='{"content": [{"LNK":"https://res.cloudinary.com/dapg5ktt4/video/upload/v1661327976/wagon%20wheel/LONG_OFF_jwfcxi.webm","HAND":"LEFT\\nHAND","FP":"LONG\\nOFF","XPOS":"-0.4","YPOS":"17.1","FSIZ":"19.1","flip":"100","noflip":"0"}]}';
 stopCount();
 startCount();
+globalfieldpos="10";
  }
 var lhbshit = document.getElementById('lhbstraighthit');
 lhbshit.addEventListener('click', lshit);
@@ -648,6 +815,7 @@ function lshit (event){
 document.getElementById('data').innerHTML ='{"content": [{"LNK":"https://res.cloudinary.com/dapg5ktt4/video/upload/v1661327951/wagon%20wheel/STRAIGHT_HIT_o7muo3.webm","HAND":"LEFT\\nHAND","FP":"STRAIGHT\\nHIT","XPOS":"-0.4","YPOS":"-31.5","FSIZ":"12.7","flip":"100","noflip":"0"}]}';
 stopCount();
 startCount();
+globalfieldpos="9";
  }
 var lhblon = document.getElementById('lhblongon');
 lhblon.addEventListener('click', llon);
@@ -655,6 +823,7 @@ function llon (event){
 document.getElementById('data').innerHTML ='{"content": [{"LNK":"https://res.cloudinary.com/dapg5ktt4/video/upload/v1661327907/wagon%20wheel/LONG_ON_pksfv9.webm","HAND":"LEFT\\nHAND","FP":"LONG\\nON","XPOS":"-1.5","YPOS":"17.3","FSIZ":"19.7","flip":"100","noflip":"0"}]}';
 stopCount();
 startCount();
+globalfieldpos="8";
  }
 var lhbdmidw = document.getElementById('lhbmidwicket');
 lhbdmidw.addEventListener('click', ldmidw);
@@ -662,6 +831,7 @@ function ldmidw (event){
 document.getElementById('data').innerHTML ='{"content": [{"LNK":"https://res.cloudinary.com/dapg5ktt4/video/upload/v1661327907/wagon%20wheel/DEEP_MID_WICKET_yr6xya.webm","HAND":"LEFT\\nHAND","FP":"DEEP\\nMID WICKET","XPOS":"-0.4","YPOS":"15.6","FSIZ":"16.5","flip":"100","noflip":"0"}]}';
 stopCount();
 startCount();
+globalfieldpos="6";
  }
 var lhbsweeper = document.getElementById('lhbsweeper');
 lhbsweeper.addEventListener('click', lsweeper);
@@ -669,6 +839,7 @@ function lsweeper (event){
 document.getElementById('data').innerHTML ='{"content": [{"LNK":"https://res.cloudinary.com/dapg5ktt4/video/upload/v1661327907/wagon%20wheel/SWEEPER_wh8q0s.webm","HAND":"LEFT\\nHAND","FP":"SWEEPER","XPOS":"-0.4","YPOS":"15.6","FSIZ":"10.9","flip":"100","noflip":"0"}]}';
 stopCount();
 startCount();
+globalfieldpos="5";
  }
 var lhbdsql = document.getElementById('lhbsquareleg');
 lhbdsql.addEventListener('click', ldsql);
@@ -676,6 +847,7 @@ function ldsql (event){
 document.getElementById('data').innerHTML ='{"content": [{"LNK":"https://res.cloudinary.com/dapg5ktt4/video/upload/v1661327907/wagon%20wheel/DEEP_SQUARE_LEG_uyxdkf.webm","HAND":"LEFT\\nHAND","FP":"DEEP\\nSQUARE LEG","XPOS":"-0.4","YPOS":"15.6","FSIZ":"15.8","flip":"100","noflip":"0"}]}';
 stopCount();
 startCount();
+globalfieldpos="4";
  }
 var lhbdfinel = document.getElementById('lhbfineleg');
 lhbdfinel.addEventListener('click', ldfinel);
@@ -683,6 +855,7 @@ function ldfinel (event){
 document.getElementById('data').innerHTML ='{"content": [{"LNK":"https://res.cloudinary.com/dapg5ktt4/video/upload/v1661327907/wagon%20wheel/DEEP_FINE_LEG_qymxzk.webm","HAND":"LEFT\\nHAND","FP":"DEEP\\nFINE LEG","XPOS":"-0.4","YPOS":"15.6","FSIZ":"17.1","flip":"100","noflip":"0"}]}';
 stopCount();
 startCount();
+globalfieldpos="3";
  }
 var lhbdveryfine = document.getElementById('lhbveryfineleg');
 lhbdveryfine.addEventListener('click', ldveryfine);
@@ -690,6 +863,7 @@ function ldveryfine (event){
 document.getElementById('data').innerHTML ='{"content": [{"LNK":"https://res.cloudinary.com/dapg5ktt4/video/upload/v1661327907/wagon%20wheel/VERY_FINE_LEG_xqxuwf.webm","HAND":"LEFT\\nHAND","FP":"DEEP\\nFINE LEG","XPOS":"-0.4","YPOS":"15.6","FSIZ":"17.1","flip":"100","noflip":"0"}]}';
 stopCount();
 startCount();
+globalfieldpos="2";
  }
 var lhbbstra = document.getElementById('lhbbehindstraight');
 lhbbstra.addEventListener('click', lbstra);
@@ -697,6 +871,7 @@ function lbstra (event){
 document.getElementById('data').innerHTML ='{"content": [{"LNK":"https://res.cloudinary.com/dapg5ktt4/video/upload/v1661328076/wagon%20wheel/BEHIND_WICKET_KEEPER_gih5te.webm","HAND":"LEFT\\nHAND","FP":"BEHIND\\nSTRAIGHT","XPOS":"-0.4","YPOS":"15.6","FSIZ":"16","flip":"100","noflip":"0"}]}';
 stopCount();
 startCount();
+globalfieldpos="16";
  }
 var lhbstt = document.getElementById('lhbshortthirdman');
 lhbstt.addEventListener('click', lstt);
@@ -704,6 +879,7 @@ function lstt (event){
 document.getElementById('data').innerHTML ='{"content": [{"LNK":"https://res.cloudinary.com/dapg5ktt4/video/upload/v1661328488/wagon%20wheel/SHORT_THIRD_MAN_egzxyy.webm","HAND":"LEFT\\nHAND","FP":"SHORT\\nTHIRD MAN","XPOS":"-1","YPOS":"16","FSIZ":"15.9","flip":"100","noflip":"0"}]}';
 stopCount();
 startCount();
+globalfieldpos="28";
  }
 var lhbbP = document.getElementById('lhbbackwardpoint');
 lhbbP.addEventListener('click', lbP);
@@ -711,6 +887,7 @@ function lbP (event){
 document.getElementById('data').innerHTML ='{"content": [{"LNK":"https://res.cloudinary.com/dapg5ktt4/video/upload/v1661328488/wagon%20wheel/BACKWARD_POINT_q6l3po.webm","HAND":"LEFT\\nHAND","FP":"BACKWARD\\nPOINT","XPOS":"-1","YPOS":"16.4","FSIZ":"17.1","flip":"100","noflip":"0"}]}';
 stopCount();
 startCount();
+globalfieldpos="27";
  }
 var lhbpoi = document.getElementById('lhbpoint');
 lhbpoi.addEventListener('click', lpoi);
@@ -718,7 +895,7 @@ function lpoi (event){
 document.getElementById('data').innerHTML ='{"content": [{"LNK":"https://res.cloudinary.com/dapg5ktt4/video/upload/v1661328488/wagon%20wheel/POINT_mj0urw.webm","HAND":"LEFT\\nHAND","FP":"POINT","XPOS":"-1","YPOS":"15.5","FSIZ":"14.8","flip":"100","noflip":"0"}]}';
 stopCount();
 startCount();
- 
+ globalfieldpos="26";
 }
 var lhbscov = document.getElementById('lhbshortcover');
 lhbscov.addEventListener('click', lscov);
@@ -726,6 +903,7 @@ function lscov (event){
 document.getElementById('data').innerHTML ='{"content": [{"LNK":"https://res.cloudinary.com/dapg5ktt4/video/upload/v1661328488/wagon%20wheel/SHORT_COVER_F_sekhjb.webm","HAND":"LEFT\\nHAND","FP":"SHORT\\nCOVER","XPOS":"-1","YPOS":"16","FSIZ":"17.1","flip":"100","noflip":"0"}]}';
 stopCount();
 startCount();
+globalfieldpos="25";
  }
 var lhbmidoff = document.getElementById('lhbmidoff');
 lhbmidoff.addEventListener('click', lmidoff);
@@ -733,6 +911,7 @@ function lmidoff (event){
 document.getElementById('data').innerHTML ='{"content": [{"LNK":"https://res.cloudinary.com/dapg5ktt4/video/upload/v1661328489/wagon%20wheel/MID_OFF_zejwra.webm","HAND":"LEFT\\nHAND","FP":"MID OFF","XPOS":"-0.7","YPOS":"15.5","FSIZ":"13.5","flip":"100","noflip":"0"}]}';
 stopCount();
 startCount();
+globalfieldpos="24";
  }
 var lhbshorts = document.getElementById('lhbshortstraight');
 lhbshorts.addEventListener('click', lshorts);
@@ -740,6 +919,7 @@ function lshorts (event){
 document.getElementById('data').innerHTML ='{"content": [{"LNK":"https://res.cloudinary.com/dapg5ktt4/video/upload/v1661328513/wagon%20wheel/SHORT_STRAIGHT_lgoo6h.webm","HAND":"LEFT\\nHAND","FP":"\\nSTRAIGHT","XPOS":"-1","YPOS":"12.8","FSIZ":"19.5","flip":"100","noflip":"0"}]}';
 stopCount();
 startCount();
+globalfieldpos="22";
  }
 var lhbbtb = document.getElementById('lhbbacktobowler');
 lhbbtb.addEventListener('click', lbtb);
@@ -747,6 +927,7 @@ function lbtb (event){
 document.getElementById('data').innerHTML ='{"content": [{"LNK":"https://res.cloudinary.com/dapg5ktt4/video/upload/v1661329656/wagon%20wheel/BACK_TO_BOWLER_zzwtd0.webm","HAND":"LEFT\\nHAND","FP":"BACK TO\\nBOWLER","XPOS":"-1","YPOS":"15.5","FSIZ":"18.8","flip":"100","noflip":"0"}]}';
 stopCount();
 startCount();
+globalfieldpos="23";
  }
 var lhbmidon = document.getElementById('lhbmidon');
 lhbmidon.addEventListener('click', lmidon);
@@ -754,6 +935,7 @@ function lmidon (event){
 document.getElementById('data').innerHTML ='{"content": [{"LNK":"https://res.cloudinary.com/dapg5ktt4/video/upload/v1661328506/wagon%20wheel/MID_ON_eqqfzs.webm","HAND":"LEFT\\nHAND","FP":"MID ON","XPOS":"-0.7","YPOS":"15.5","FSIZ":"13.5","flip":"100","noflip":"0"}]}';
 stopCount();
 startCount();
+globalfieldpos="21";
  }
 var lhbsmidw = document.getElementById('lhbshortmidwicket');
 lhbsmidw.addEventListener('click', lsmidw);
@@ -761,6 +943,7 @@ function lsmidw (event){
 document.getElementById('data').innerHTML ='{"content": [{"LNK":"https://res.cloudinary.com/dapg5ktt4/video/upload/v1661328506/wagon%20wheel/SHORT_MIDWICKET_dnabhu.webm","HAND":"LEFT\\nHAND","FP":"SHORT\\nMID-WICKET","XPOS":"-0.6","YPOS":"15.5","FSIZ":"14.7","flip":"100","noflip":"0"}]}';
 stopCount();
 startCount();
+globalfieldpos="20";
  }
 var lhbssql = document.getElementById('lhbshortsquareleg');
 lhbssql.addEventListener('click', lssql);
@@ -768,6 +951,7 @@ function lssql (event){
 document.getElementById('data').innerHTML ='{"content": [{"LNK":"https://res.cloudinary.com/dapg5ktt4/video/upload/v1661328506/wagon%20wheel/SHORT_SQUARE_LEG_bupfgm.webm","HAND":"LEFT\\nHAND","FP":"SHORT\\nSQUARE-LEG","XPOS":"-0.8","YPOS":"15.5","FSIZ":"15.4","flip":"100","noflip":"0"}]}';
 stopCount();
 startCount();
+globalfieldpos="19";
  }
 var lhbbwsql = document.getElementById('lhbbackwardsquareleg');
 lhbbwsql.addEventListener('click', lbwsql);
@@ -775,6 +959,7 @@ function lbwsql (event){
 document.getElementById('data').innerHTML ='{"content": [{"LNK":"https://res.cloudinary.com/dapg5ktt4/video/upload/v1661328506/wagon%20wheel/BACKWARD_SQAURE_LEG_dmpsd9.webm","HAND":"LEFT\\nHAND","FP":"BACKWARD\\nSQUARE-LEG","XPOS":"-0.9","YPOS":"16","FSIZ":"15.5","flip":"100","noflip":"0"}]}';
 stopCount();
 startCount();
+globalfieldpos="18";
  }
 var lhbsfnl = document.getElementById('lhbshortfineleg');
 lhbsfnl.addEventListener('click', lsfnl);
@@ -782,6 +967,7 @@ function lsfnl (event){
 document.getElementById('data').innerHTML ='{"content": [{"LNK":"https://res.cloudinary.com/dapg5ktt4/video/upload/v1661328506/wagon%20wheel/SHORT_FINE_LEG_mpozi0.webm","HAND":"LEFT\\nHAND","FP":"SHORT\\nFINE LEG","XPOS":"-1","YPOS":"16","FSIZ":"16.6","flip":"100","noflip":"0"}]}';
 stopCount();
 startCount();
+globalfieldpos="17";
  }
 var lhbstrsix = document.getElementById('lhbstraightsix');
 lhbstrsix.addEventListener('click', lstrsix);
