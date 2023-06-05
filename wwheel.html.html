@@ -115,20 +115,29 @@
 <textarea id="fildersarray" style="position:absolute;left:1680px;top:90px"></textarea>
 <textarea id="bowlbgcol" style="position:absolute;left:740px;top:550px"></textarea>
 <textarea id="bowlfontcol" style="position:absolute;left:740px;top:600px"></textarea>
+<textarea id="fieldersheetid" style="position:absolute;left:740px;top:470px"></textarea>
 <div><button id='colsubmit' style="height:20px; width:70px;position:absolute;top:650px;left:830px;font-size:12px;font-weight:bold">colSUBMIT</button></div>
 <div><button id='bturlsub' style="height:20px; width:70px;position:absolute;top:50px;left:1780px;font-size:12px;font-weight:bold">SUBMIT</button></div>
 <div><button id='fielderssub' style="height:20px; width:70px;position:absolute;top:130px;left:1780px;font-size:12px;font-weight:bold">SUBMIT</button></div>
+<div><button id='fieldersheet' style="height:20px; width:90px;position:absolute;top:510px;left:830px;font-size:12px;font-weight:bold">field SUBMIT</button></div>
 <span class="dot" id="indicator" style="height:80px;width:80px;background-color:black;border-radius:50%;z-index:-3;position:absolute;top:110px;left:780px"></span>
 <div><input id="colmark" type="color" id="favcolor" name="favcolor" value="#ff0000" style="width:15px;height:15px;position:absolute;top:650px;left:770px;" ></div>
-<p id="colora" style="font-weight:bolder;color:white;font-size:10px; margin-top:2px;position:absolute;top:670px;left:770px;">RIGHT HANDER</p>
+<p id="colora" style="font-weight:bolder;color:white;font-size:10px; margin-top:2px;position:absolute;top:670px;left:770px;">FIELDERCOLORS</p>
 </body>
 <script>
 let plnamesarray;
 let plphotosarray;
 let fielderindex;
 let plimg="";
+let sheetid="";
+
+var sheetbut=document.getElementById('fieldersheet');
+sheetbut.addEventListener('click', getsheetid)
+function getsheetid(event){
+sheetid=document.getElementById('fieldersheetid').value;
 const xhr = new XMLHttpRequest();
-xhr.open("GET", "https://sheets.googleapis.com/v4/spreadsheets/1odIgvLAuBpcCWtBo0BgB6AQ647lvo_YmuS1ChE-YlNw/values/Sheet1!K106:K108?key=AIzaSyCwf9cJDahOZ24or0sCieKiB4Harqvlds0");
+
+xhr.open("GET", "https://sheets.googleapis.com/v4/spreadsheets/"+sheetid+"/values/Sheet1!K106:K108?key=AIzaSyCwf9cJDahOZ24or0sCieKiB4Harqvlds0");
 xhr.send();
 xhr.responseType = "json";
 xhr.onload = () => {
@@ -142,6 +151,9 @@ console.log(plnamesarray+plphotosarray)
     console.log(`Error: ${xhr.status}`);
   }
 };
+}
+
+
 
 
 var colo=document.getElementById('colmark');
@@ -407,7 +419,7 @@ document.getElementById('indicator').style.backgroundColor="#3fd300";
 	function timedCount() {
   countdown++;
   timeout = setTimeout(timedCount, 1000);
-  if (countdown===11)
+  if (countdown===12)
   {stopCount();document.getElementById('data').innerHTML ="";
   document.getElementById('FIELDER').innerHTML ="";
  globalfielder="";
