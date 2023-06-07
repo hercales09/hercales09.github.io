@@ -9,7 +9,7 @@ user-scalable=1">
 </head>
 <body style="background:black">
 <div class="voice_to_text">
-<textarea id="convert_text" style="color:black;font-weight:bold"></textarea>
+<textarea id="convert_text" onfocus="this.value=''" style="color:black;font-weight:bold"></textarea>
 <button id="clickconvert" style="position:absolute;top:50px;left:115px;font-weight:bold;">SPEED</button>
 <button id="clear" style="position:absolute;top:80px;left:115px;font-weight:bold;">CLEAR</button>
 </div>
@@ -29,8 +29,7 @@ document.getElementById("abc").innerHTML=speeds;
 }
 function clearspeeda(){
 document.getElementById("abc").innerHTML="";
-document.getElementById("convert_text").innerHTML="";
-document.getElementById("convert_text").value="";
+convert_text.innerHTML="";
 };
 clickconvert.addEventListener('click', function(){
 var speech = true;
