@@ -1,0 +1,33 @@
+<html>
+<iframe id="main" style="z-index:0;width:1920px;height:900px;position:absolute;top:0x;left:0px;" src="" scrolling="no"></iframe>
+<div><button id='START' style="z-index:1;height:50px; width:130px;position:absolute;top:30px;left:1700px;font-size:25px;font-weight:bold">START</button></div>
+<script>
+let bturl;
+let click=0;
+
+var surl = document.getElementById('START');
+surl.addEventListener('click', submitl);
+function submitl (event){
+const xhr = new XMLHttpRequest();
+
+xhr.open("GET", "https://sheets.googleapis.com/v4/spreadsheets/1PM9Q3cMxR09r5Z29kEoeZPG-NvpK5YcX0PBiF6shr8I/values/Sheet1!B72:B72?key=AIzaSyCwf9cJDahOZ24or0sCieKiB4Harqvlds0");
+xhr.send();
+xhr.responseType = "json";
+xhr.onload = () => {
+  if (xhr.readyState == 4 && xhr.status == 200) {
+    console.log(xhr.response);
+	bturl=JSON.parse(xhr.response.values[0][0]);
+  } else {
+    console.log(`Error: ${xhr.status}`);
+  }
+};
+document.getElementById("main").src =bturl;
+var sample = document.getElementById("main");
+click=click+1;
+if(click===3){
+sample.style.zIndex="2";
+}
+}
+
+</script>
+</html>
