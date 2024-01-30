@@ -4,10 +4,6 @@
 <script>
 let bturl;
 let click=0;
-
-var surl = document.getElementById('START');
-surl.addEventListener('click', submitl);
-function submitl (event){
 const xhr = new XMLHttpRequest();
 
 xhr.open("GET", "https://sheets.googleapis.com/v4/spreadsheets/1PM9Q3cMxR09r5Z29kEoeZPG-NvpK5YcX0PBiF6shr8I/values/Sheet1!B72:B72?key=AIzaSyCwf9cJDahOZ24or0sCieKiB4Harqvlds0");
@@ -21,6 +17,9 @@ xhr.onload = () => {
     console.log(`Error: ${xhr.status}`);
   }
 };
+var surl = document.getElementById('START');
+surl.addEventListener('click', submitl);
+function submitl (event){
 document.getElementById("main").src =bturl;
 var sample = document.getElementById("main");
 click=click+1;
