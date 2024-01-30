@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Permissions-Policy" content="interest-cohort=()">
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0,
+user-scalable=1">
+<title>Home</title>
+</head>
+<body style="background:black">
+<div class="voice_to_text">
+<textarea id="convert_text" onfocus="this.value=''" style="color:black;font-weight:bold"></textarea>
+<button id="clickconvert" style="position:absolute;top:50px;left:115px;font-weight:bold;">SPEED</button>
+<button id="clear" style="position:absolute;top:80px;left:115px;font-weight:bold;">CLEAR</button>
+</div>
+<div>
+<p id="abc" style="color:white;font-weight:bold"></p>
+</div>
+<script>
+var val;
+var ts=document.getElementById('convert_text');
+ts.addEventListener('input', typespeed);
+function typespeed (event){
+let timeoutas= setTimeout(latency,2000);
+function latency(){
+var speeds=document.getElementById("convert_text").value;
+document.getElementById("abc").innerHTML=speeds;
+}let timeouta= setTimeout(clearspeeda,11000)
+}
+function clearspeeda(){
+document.getElementById("abc").innerHTML="";
+convert_text.innerHTML="";
+};
+clickconvert.addEventListener('click', function(){
+var speech = true;
+window.SpeechRecognition = window.webkitSpeechRecognition;
+const recognition = new SpeechRecognition();
+recognition.interimResults = true;
+
+recognition.addEventListener('result',e=>{
+		console.log(e);
+const transcript = Array.from(e.results)
+.map(result =>result[0])
+.map(result => result.transcript)
+convert_text.innerHTML = transcript;
+val= transcript;
+let timeout= setTimeout(clearspeed,2000)
+})
+function clearspeed(){
+	var a=document.getElementById("convert_text").value;
+var speed=document.getElementById("abc").innerHTML;
+if(a===""){}
+else{
+	console.log(a);
+	document.getElementById("abc").innerHTML=val;
+	recognition.abort();
+	}
+	let timeouta= setTimeout(clearspeeda,16000)
+}
+function clearspeeda(){
+document.getElementById("abc").innerHTML="";
+convert_text.innerHTML="";
+}
+if(speech == true){
+recognition.start();
+}
+})
+
+clear.addEventListener('click', clearsp);
+function clearsp (event){
+document.getElementById("abc").innerHTML="";
+document.getElementById("convert_text").innerHTML="";
+document.getElementById("convert_text").value= "";
+ clearTimeout(timeouta);
+ clearTimeout(timeout);
+}
+
+</script>
+</body>
+</html>

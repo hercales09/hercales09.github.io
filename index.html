@@ -1,80 +1,81 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta http-equiv="Permissions-Policy" content="interest-cohort=()">
-<meta charset="utf-8">
-<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0,
-user-scalable=1">
-<title>Home</title>
-</head>
-<body style="background:black">
-<div class="voice_to_text">
-<textarea id="convert_text" onfocus="this.value=''" style="color:black;font-weight:bold"></textarea>
-<button id="clickconvert" style="position:absolute;top:50px;left:115px;font-weight:bold;">SPEED</button>
-<button id="clear" style="position:absolute;top:80px;left:115px;font-weight:bold;">CLEAR</button>
+<Title:>
+  Widgets
+
+<Body:>
+<style>  
+@keyframes crescendo {
+transition-delay: 2s;
+  0%   {left: 50%;top: 50%;background-size:32px;width:32px;height:32px;}
+  100% { left: 48.8%; top: 49%;background-size:70px;width:70px;height:70px;}
+}
+@keyframes clicken {
+100% {width:3.5%;height:5.5%;}
+0% {width:3.5%;height:5.5%;}
+
+} 
+
+</style>
+<div id="lengths">
+ <img src="{{widgets.data.lengthtra}}" width="800" height="800";>
+ </div>
+<div id="rent">
+ <img src="{{widgets.data.mainimg}}" width="800" height="800"  style="opacity:{{widgets.data.imgopac}};">
+ </div>		
+ <div id="vent">
+ <img src="{{widgets.data.mainimgl}}" width="800" height="800"  style="opacity:{{widgets.data.imgopacl}};">
+ </div>
+
+<div id="trent" style="width:1920px;height:1080px;z-index:8"on-mouseup="clickity($event)">
+
+<svg id="trackpath" height="1920" width="1080" xmlns="http://www.w3.org/2000/svg" style="stroke-dashoffset:{{widgets.data.l1offset}};opacity:{{widgets.data.line1opac}};z-index:9" >
+			<line id="trek" x1="{{widgets.data.line1x1}}" y1="{{widgets.data.line1y1}}" x2="{{widgets.data.line1x2}}" y2="{{widgets.data.line1y2}}" stroke="blue" stroke-width="21" filter="blur(2px)" opacity="0.7" />
+
+	<svg id="trackpathh" height="1920" width="1080" xmlns="http://www.w3.org/2000/svg" style="stroke-dashoffset:{{widgets.data.l2offset}};opacity:{{widgets.data.line2opac}};z-index:9" >
+			<line id="tworek" x1="{{widgets.data.line1x2}}" y1="{{widgets.data.line1y2}}" x2="{{widgets.data.line2x2}}" y2="{{widgets.data.line2y2}}" stroke="blue" stroke-width="14" filter="blur(3px)" opacity="0.95" />
+		
+		
+			
+	</svg>
+	</svg>
+	
+	
 </div>
-<div>
-<p id="abc" style="color:white;font-weight:bold"></p>
+<button id="kent1" style="background-color:red ;animation: {{widgets.data.buttonclick}};" on-click="fulltoss($event)">FULL TOSS!</button>
+
+<button id="kent2" style="border:{{widgets.data.rhblbstroke}}" on-click="rhbleftball($event)"><img src="https://ik.imagekit.io/ctmfcct2/rhblbF_mxEaQnfxv.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1665425093286" width="200px" height="200px">
+</button>
+
+<button id="kent3" style="border:{{widgets.data.rhbrbstroke}}" on-click="rhbrightball($event)"><img src="https://ik.imagekit.io/ctmfcct2/rhbrbF_qVXKvEfTg.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1665425093282"  width="200px" height="200px">
+</button>
+
+<button id="kent4" style="border:{{widgets.data.lhbrbstroke}}" on-click="lhbrightball($event)"><img src="https://ik.imagekit.io/ctmfcct2/lhbrbF_t02iadcCZ.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1665425093261" width="200px" height="200px">
+</button>
+
+<button id="kent5" style="border:{{widgets.data.lhblbstroke}}" on-click="lhbleftball($event)"><img src="https://ik.imagekit.io/ctmfcct2/lhblbF_kbITp30Rk.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1665425092938" width="200px" height="200px">
+</button>
+
+<button id="cleanslate" style="background-color:#333 ;animation: {{widgets.data.buttonclick}};" on-click="slateclean($event)">CLEAN!</button>
+ <button id="colors" style="background-color:#00c4ff;" on-click="playerlightblue($event)"></button>
+ <button id="colors2" style="background-color:#0250c5;left:5%" on-click="playerdarkblue($event)"></button>
+  <button id="colors3" style="background-color:#ffe400;left:7%" on-click="playeryellow($event)"></button>
+   <button id="colors4" style="background-color:#00cd26;left:9%" on-click="playergreen($event)"></button>
+    <button id="colors5" style="background-color:#f00;" on-click="playerred($event)"></button>
+ <button id="colors6" style="background-color:#a90000;left:5%" on-click="playerdarkred($event)"></button>
+  <button id="colors7" style="background-color:#505050;left:7%" on-click="playergrey($event)"></button>
+   <button id="colors8" style="background-color:#8900d3;left:9%" on-click="playerpurple($event)"></button>
+   <button id="colors9" style="background-color:#ff6600;" on-click="playerorange($event)"></button>
+    <button id="colors10" style="background-color:#ff0590;left:5%" on-click="playerpink($event)"></button>
+<div id="target" style="transform: {{widgets.data.translb}};width:{{widgets.data.width}};height:{{widgets.data.height}};background-size:{{widgets.data.bgsize}};animation: {{widgets.data.ballzoom}};opacity:{{widgets.data.lbopac}};z-index:9">  
 </div>
-<script>
-var val;
-var ts=document.getElementById('convert_text');
-ts.addEventListener('input', typespeed);
-function typespeed (event){
-let timeoutas= setTimeout(latency,2000);
-function latency(){
-var speeds=document.getElementById("convert_text").value;
-document.getElementById("abc").innerHTML=speeds;
-}let timeouta= setTimeout(clearspeeda,11000)
-}
-function clearspeeda(){
-document.getElementById("abc").innerHTML="";
-convert_text.innerHTML="";
-};
-clickconvert.addEventListener('click', function(){
-var speech = true;
-window.SpeechRecognition = window.webkitSpeechRecognition;
-const recognition = new SpeechRecognition();
-recognition.interimResults = true;
+<div id="target2" style="transform: {{widgets.data.transrb}};width:{{widgets.data.width}};height:{{widgets.data.height}};background-size:{{widgets.data.bgsize}};animation: {{widgets.data.ballzoom}};opacity:{{widgets.data.rbopac}};z-index:9">  
+</div>
 
-recognition.addEventListener('result',e=>{
-		console.log(e);
-const transcript = Array.from(e.results)
-.map(result =>result[0])
-.map(result => result.transcript)
-convert_text.innerHTML = transcript;
-val= transcript;
-let timeout= setTimeout(clearspeed,2000)
-})
-function clearspeed(){
-	var a=document.getElementById("convert_text").value;
-var speed=document.getElementById("abc").innerHTML;
-if(a===""){}
-else{
-	console.log(a);
-	document.getElementById("abc").innerHTML=val;
-	recognition.abort();
-	}
-	let timeouta= setTimeout(clearspeeda,16000)
-}
-function clearspeeda(){
-document.getElementById("abc").innerHTML="";
-convert_text.innerHTML="";
-}
-if(speech == true){
-recognition.start();
-}
-})
+ <div id="circle" style="background-color:white;transform: {{widgets.data.circpitch}};filter:blur(1px);opacity: {{widgets.data.circpitchopac}};border: 3px solid black; z-index: -1;"> </div>	
+ 
+ <div id="shadowcircle1" style="background-color:black;transform: {{widgets.data.shadowpos1}};filter:blur(5px);scale: {{widgets.data.shadow1scale}};border; z-index: -2;opacity: {{widgets.data.shadow1opacity}}"> </div>	
+  <div id="shadowcircle2" style="background-color:black;transform: {{widgets.data.shadowpos2}};filter:blur(5px);scale: {{widgets.data.shadow2scale}};border; z-index: -2;opacity: {{widgets.data.shadow2opacity}}">
+ </div>	
+ <div id="status" style="background-color:{{widgets.data.statcol}}; z-index: -2;">
+ </div> 
 
-clear.addEventListener('click', clearsp);
-function clearsp (event){
-document.getElementById("abc").innerHTML="";
-document.getElementById("convert_text").innerHTML="";
-document.getElementById("convert_text").value= "";
- clearTimeout(timeouta);
- clearTimeout(timeout);
-}
-
-</script>
-</body>
-</html>
+  <h1 id="statustext" style="z-index: -2;transition:{{widgets.data.statustransition}};">{{widgets.data.statustext}}</h1>
